@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>简易流 | jianyiflow.com</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Base styles, adjusted for a more refined, minimalist aesthetic */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fafafa;
+            background-color: #FFFBF5;
+            color: #4A5568;
+            line-height: 1.7;
         }
         html {
             scroll-behavior: smooth;
@@ -29,128 +31,261 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #a1a1a1;
         }
+        
+        /* 英雄区域渐变色 - 更温暖浅色调 */
         .hero-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FDB863 0%, #F39C12 100%);
+            position: relative;
+            overflow: hidden;
         }
+
+        /* 优化后的英雄区域底部圆弧 - 反向圆弧（凹向上），响应式动态变化 */
+        .hero-arc-bottom {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 120px; /* Base height, adjusted by JS for responsiveness */
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-arc-bottom svg {
+            display: block;
+            width: calc(100% + 2px);
+            height: 100%;
+            margin-left: -1px;
+        }
+
+        /* Responsive arc height adjustments - these are superseded by JS, but kept for clarity/fallback */
+        @media (max-width: 1024px) {
+            .hero-arc-bottom {
+                height: 100px;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-arc-bottom {
+                height: 80px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-arc-bottom {
+                height: 60px;
+            }
+        }
+
+        /* 确保下一个section与圆弧完美衔接 */
+        .section-after-hero {
+            position: relative;
+            z-index: 2;
+            margin-top: -1px;
+        }
+
+        /* 卡片悬停效果 */
         .card-hover {
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            border: 1px solid #EDEDED;
         }
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 链接和按钮的暖色调 - 调亮颜色 */
+        .warm-link {
+            color: #D97706;
+            font-weight: 500;
+        }
+        .warm-link:hover {
+            color: #B45309;
+            text-decoration: underline;
+        }
+        .warm-btn {
+            background-color: #FDB863;
+            color: white;
+            padding: 0.85rem 2.2rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .warm-btn:hover {
+            background-color: #F39C12;
+            transform: translateY(-2px);
+        }
+
+        /* 自定义图标大小和颜色 */
+        .icon-lg {
+            width: 3.5rem;
+            height: 3.5rem;
+            stroke-width: 1.5;
+        }
+        .icon-md {
+            width: 2.5rem;
+            height: 2.5rem;
+            stroke-width: 1.5;
+        }
+        .icon-sm {
+            width: 1.25rem;
+            height: 1.25rem;
+            stroke-width: 2;
+        }
+
+        /* 修复移动端响应式问题 */
+        @media (max-width: 768px) {
+            .hero-gradient {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+
+        /* 导航栏背景模糊效果增强 */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* 图片加载失败时的占位符 - 更温暖的颜色 */
+        .img-placeholder {
+            background: linear-gradient(135deg, #FDB863 0%, #F39C12 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* 头像样式 */
+        .avatar-container {
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border: 4px solid #FDB863;
+            background: linear-gradient(135deg, #FDB863 0%, #F39C12 100%);
+        }
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .avatar-container {
+                width: 10rem;
+                height: 10rem;
+            }
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased">
+<body class="text-gray-700 antialiased">
 
-    <!-- Header Section -->
-    <header class="bg-white/95 backdrop-blur-sm shadow-sm py-4 fixed w-full z-50 top-0">
-        <nav class="container mx-auto flex justify-between items-center px-4 lg:px-8">
-            <!-- Logo -->
-            <a href="#hero" class="text-xl lg:text-2xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
+    <header class="nav-blur shadow-sm py-4 fixed w-full z-50 top-0">
+        <nav class="container mx-auto flex justify-between items-center px-6 lg:px-12">
+            <a href="#hero" class="text-2xl font-bold warm-link">
                 简易流
             </a>
-            <!-- Navigation -->
-            <div class="hidden md:flex space-x-8">
-                <a href="#evotune" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">EvoTune</a>
-                <a href="#future-apps" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">未来应用</a>
-                <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">关于</a>
-                <a href="#contact" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">联系</a>
-                <a href="privacy-policies.html" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">隐私政策</a>
+            <div class="hidden md:flex space-x-10">
+                <a href="#evotune" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">EvoTune</a>
+                <a href="#future-apps" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">未来应用</a>
+                <a href="#about" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">关于</a>
+                <a href="#contact" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">联系</a>
+                <a href="privacy-policies.html" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">隐私政策</a>
             </div>
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2">
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 hover:text-amber-700 transition-colors rounded-md">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </nav>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-4 py-2 space-y-2">
-                <a href="#evotune" class="block py-2 text-gray-600 hover:text-indigo-600">EvoTune</a>
-                <a href="#future-apps" class="block py-2 text-gray-600 hover:text-indigo-600">未来应用</a>
-                <a href="#about" class="block py-2 text-gray-600 hover:text-indigo-600">关于</a>
-                <a href="#contact" class="block py-2 text-gray-600 hover:text-indigo-600">联系</a>
-                <a href="privacy-policies.html" class="block py-2 text-gray-600 hover:text-indigo-600">隐私政策</a>
+            <div class="px-6 py-3 space-y-2">
+                <a href="#evotune" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">EvoTune</a>
+                <a href="#future-apps" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">未来应用</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">关于</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">联系</a>
+                <a href="privacy-policies.html" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">隐私政策</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero-gradient text-white py-20 lg:py-32 mt-16">
-        <div class="container mx-auto text-center px-4 lg:px-8">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+    <section id="hero" class="hero-gradient text-white py-20 md:py-32 lg:py-40 mt-16">
+        <div class="container mx-auto text-center px-6 lg:px-12 max-w-5xl">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 欢迎来到简易流
             </h1>
-            <p class="text-lg md:text-xl lg:text-2xl mb-8 font-light opacity-90 max-w-3xl mx-auto">
+            <p class="text-lg md:text-xl lg:text-2xl mb-10 font-light opacity-90 max-w-4xl mx-auto">
                 让生活更幸福、更简单<br class="hidden sm:block">
                 通过创新的软件和应用，助您实现成长与平衡
             </p>
-            <a href="#evotune" class="inline-block bg-white text-indigo-600 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300">
+            <a href="#evotune" class="inline-block warm-btn font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300">
                 探索我们的应用
             </a>
         </div>
+        <div class="hero-arc-bottom">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,0 C360,80 1080,80 1440,0 L1440,120 L0,120 Z" fill="#FFFBF5"/>
+            </svg>
+        </div>
     </section>
 
-    <!-- EvoTune Section -->
-    <section id="evotune" class="py-16 lg:py-24 bg-white">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-800">
-                    EvoTune 练声日常
-                </h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    您的专属练声伙伴，科学高效的日常练声解决方案
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Image -->
-                <div class="order-2 lg:order-1">
-                    <div class="relative">
-                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                            <div class="text-center">
-                                <div class="text-6xl mb-4">🎵</div>
-                                <h3 class="text-2xl font-bold text-gray-800 mb-2">EvoTune</h3>
-                                <p class="text-gray-600">练声日常</p>
-                            </div>
-                        </div>
+    <section id="evotune" class="section-after-hero py-20 lg:py-32 bg-amber-50">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="flex justify-center lg:justify-start order-2 lg:order-1">
+                    <div class="w-48 h-48 lg:w-72 lg:h-72 rounded-full shadow-lg border-4 border-amber-200 img-placeholder">
+                        <img src="EvoTune图标2048.png" alt="EvoTune 练声日常图标" 
+                             class="w-full h-full object-cover rounded-full" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-full img-placeholder\'>EvoTune</div>'">
                     </div>
                 </div>
                 
-                <!-- Content -->
-                <div class="order-1 lg:order-2 space-y-6">
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        EvoTune 练声日常是简易流推出的首款核心产品，旨在帮助声乐爱好者、专业歌手以及任何希望改善发声的用户，进行科学、高效的日常练声。
+                <div class="text-center lg:text-left space-y-6 order-1 lg:order-2">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-amber-900 leading-tight">
+                        EvoTune 练声日常
+                    </h2>
+                    <p class="text-lg font-medium text-amber-800">
+                        练声神器，支持无限自动生成练声稿，内置低延迟耳返与录音功能，助你轻松提升发音与气息，随时随地练声不受限！
                     </p>
-                    
-                    <div class="grid gap-4">
-                        <div class="flex items-start space-x-3">
-                            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">个性化练声计划</h4>
-                                <p class="text-gray-600 text-sm">根据您的声线和目标，智能推荐训练内容</p>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center justify-center lg:justify-start">
+                            <svg class="icon-md text-amber-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            核心功能
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-amber-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>无限练声稿件生成</span>
                             </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">实时音高反馈</h4>
-                                <p class="text-gray-600 text-sm">精准识别您的音高，助您找准每一个音</p>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-amber-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>低延迟专业耳返</span>
                             </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">进步可视化</h4>
-                                <p class="text-gray-600 text-sm">详细记录您的练声数据，见证每一次成长</p>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-amber-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>智能录音转文字</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-amber-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>多语言支持</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="pt-4">
-                        <a href="#" class="inline-block bg-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 hover:scale-105 transition-all duration-300">
+
+                    <div class="pt-6">
+                        <a href="#" class="inline-block warm-btn font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300">
                             立即体验 (即将上线)
                         </a>
                     </div>
@@ -159,42 +294,47 @@
         </div>
     </section>
 
-    <!-- Future Apps Section -->
-    <section id="future-apps" class="py-16 lg:py-24 bg-gray-50">
-        <div class="container mx-auto px-4 lg:px-8">
+    <section id="future-apps" class="py-20 lg:py-32 bg-white">
+        <div class="container mx-auto px-6 lg:px-12">
             <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-800">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-5 text-gray-800">
                     探索未来
                 </h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    简易流致力于从多维度提升您的生命质量。除了EvoTune，我们正在积极开发一系列关于个体命运、健康、心理的创新应用
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    简易流致力于从多维度提升您的生命质量。除了 EvoTune，我们正在积极开发一系列关于个体命运、健康、心理的创新应用
                 </p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Destiny App Card -->
-                <div class="bg-white rounded-2xl shadow-sm p-8 card-hover border border-gray-100">
-                    <div class="text-indigo-500 text-5xl mb-6 text-center">🔮</div>
-                    <h3 class="text-xl font-bold text-center mb-4 text-gray-800">个体命运探索</h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                <div class="bg-white rounded-2xl border border-gray-100 p-8 card-hover text-center">
+                    <div class="mb-6 flex justify-center">
+                        <svg class="icon-lg text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">个体命运探索</h3>
+                    <p class="text-gray-600 leading-relaxed">
                         深入洞察个人特质与生命轨迹，提供智慧指引，助您更好地规划人生，把握机遇
                     </p>
                 </div>
-                
-                <!-- Health App Card -->
-                <div class="bg-white rounded-2xl shadow-sm p-8 card-hover border border-gray-100">
-                    <div class="text-green-500 text-5xl mb-6 text-center">💚</div>
-                    <h3 class="text-xl font-bold text-center mb-4 text-gray-800">身心健康管理</h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
+                <div class="bg-white rounded-2xl border border-gray-100 p-8 card-hover text-center">
+                    <div class="mb-6 flex justify-center">
+                        <svg class="icon-lg text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">身心健康管理</h3>
+                    <p class="text-gray-600 leading-relaxed">
                         从日常习惯到情绪管理，提供科学、实用的健康解决方案，帮助您拥有充沛的精力
                     </p>
                 </div>
-                
-                <!-- Psychology App Card -->
-                <div class="bg-white rounded-2xl shadow-sm p-8 card-hover border border-gray-100">
-                    <div class="text-yellow-500 text-5xl mb-6 text-center">🧠</div>
-                    <h3 class="text-xl font-bold text-center mb-4 text-gray-800">心理成长向导</h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
+                <div class="bg-white rounded-2xl border border-gray-100 p-8 card-hover text-center">
+                    <div class="mb-6 flex justify-center">
+                        <svg class="icon-lg text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">心理成长向导</h3>
+                    <p class="text-gray-600 leading-relaxed">
                         构建积极心态，提升情商，提供专业的心理疏导和成长工具，助您实现自我超越
                     </p>
                 </div>
@@ -202,28 +342,23 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 lg:py-24 bg-white">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-800">
+    <section id="about" class="py-20 lg:py-32 bg-amber-50">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-5 text-gray-800">
                     关于简易流
                 </h2>
             </div>
-            
-            <div class="grid lg:grid-cols-3 gap-12 items-center">
+            <div class="grid lg:grid-cols-3 gap-12 lg:gap-16 items-center">
                 <div class="lg:col-span-1 flex justify-center">
-                    <div class="w-48 h-48 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center">
-                        <div class="text-center">
-                            <div class="text-6xl mb-2">👋</div>
-                            <p class="text-lg font-semibold text-gray-800">简易</p>
-                        </div>
+                    <div class="avatar-container">
+                        <img src="小黑.png" alt="家毅头像" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-amber-100 to-orange-200 rounded-full flex items-center justify-center shadow-lg\'><svg class=\'icon-lg text-amber-800\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M13 10V3L4 14h7v7l9-11h-7z\'></path></svg></div>'">
                     </div>
                 </div>
-                
-                <div class="lg:col-span-2 space-y-6">
+                <div class="lg:col-span-2 space-y-6 text-center lg:text-left">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        大家好，我是<span class="font-semibold text-indigo-600">简易</span>，jianyiflow.com 的创始人。我坚信每个人都值得拥有一个幸福、便捷且充满成长的生活。
+                        大家好，我是<span class="font-semibold warm-link">家毅</span>，jianyiflow.com 的创始人。我坚信每个人都值得拥有一个幸福、便捷且充满成长的生活。
                     </p>
                     <p class="text-lg text-gray-700 leading-relaxed">
                         凭借在软件开发领域的经验和对个人福祉的深刻理解，我创立了简易流，致力于打造一系列高品质、实用的应用程序。
@@ -236,21 +371,23 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 lg:py-24 bg-gray-50">
-        <div class="container mx-auto px-4 lg:px-8 text-center">
+    <section id="contact" class="py-20 lg:py-32 bg-white">
+        <div class="container mx-auto px-6 lg:px-12 text-center">
             <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-gray-800">
                 联系我们
             </h2>
-            <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
                 如果您对简易流的应用有任何疑问、建议或合作意向，欢迎随时与我们联系
             </p>
-            
             <div class="max-w-md mx-auto">
-                <div class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
-                    <div class="text-indigo-500 text-4xl mb-4">📧</div>
-                    <p class="text-lg font-semibold text-gray-700 mb-2">邮件联系</p>
-                    <a href="mailto:Jianyi8679@outlook.com" class="text-indigo-600 hover:text-indigo-700 text-lg font-medium transition-colors break-all">
+                <div class="bg-white rounded-2xl border border-gray-100 p-8 card-hover">
+                    <div class="mb-6 flex justify-center">
+                        <svg class="icon-lg text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-xl font-semibold text-gray-700 mb-3">邮件联系</p>
+                    <a href="mailto:Jianyi8679@outlook.com" class="warm-link text-lg break-all">
                         Jianyi8679@outlook.com
                     </a>
                 </div>
@@ -258,16 +395,15 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
                 <div class="text-center md:text-left">
-                    <p class="mb-2">&copy; 2025 简易流 Jianyiflow.com. All rights reserved.</p>
-                    <p class="text-sm text-gray-400">由 <span class="font-semibold text-white">简易</span> 精心打造，为您带来幸福与成长</p>
+                    <p class="mb-2 text-base">&copy; 2025 简易流 Jianyiflow.com. All rights reserved.</p>
+                    <p class="text-sm text-gray-400">由 <span class="font-semibold text-white">家毅</span> 精心打造，为您带来幸福与成长</p>
                 </div>
                 <div class="text-center md:text-right">
-                    <a href="privacy-policies.html" class="text-gray-300 hover:text-white transition-colors text-sm">
+                    <a href="privacy-policies.html" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
                         隐私政策
                     </a>
                 </div>
@@ -280,16 +416,18 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking on links
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-        });
+
+            // Close mobile menu when clicking on links
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -297,13 +435,61 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 80; // 固定header高度
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
                     });
                 }
             });
         });
+
+        // 添加滚动时导航栏效果
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // 动态调整反向圆弧响应式效果
+        function updateArcPath() {
+            const svg = document.querySelector('.hero-arc-bottom svg');
+            const path = svg.querySelector('path');
+            const screenWidth = window.innerWidth;
+            let arcHeight; // This will define the peak of the arc
+            let svgViewBoxHeight; // This will define the total height of the SVG viewport
+
+            if (screenWidth <= 480) {
+                arcHeight = 40; // Peak of the arc for small screens
+                svgViewBoxHeight = 60; // Total SVG height for small screens
+            } else if (screenWidth <= 768) {
+                arcHeight = 50; // Peak of the arc for medium screens
+                svgViewBoxHeight = 80; // Total SVG height for medium screens
+            } else if (screenWidth <= 1024) {
+                arcHeight = 65; // Peak of the arc for small desktop
+                svgViewBoxHeight = 100; // Total SVG height for small desktop
+            } else {
+                arcHeight = 80; // Peak of the arc for large desktop
+                svgViewBoxHeight = 120; // Total SVG height for large desktop
+            }
+
+            // The path needs to be dynamic based on arcHeight and svgViewBoxHeight
+            // M0,0 C[halfWidth],arcHeight [totalWidth - halfWidth],arcHeight 1440,0 L1440,svgViewBoxHeight L0,svgViewBoxHeight Z
+            const pathData = `M0,0 C360,${arcHeight} 1080,${arcHeight} 1440,0 L1440,${svgViewBoxHeight} L0,${svgViewBoxHeight} Z`;
+            
+            path.setAttribute('d', pathData);
+            svg.setAttribute('viewBox', `0 0 1440 ${svgViewBoxHeight}`);
+        }
+
+        // 页面加载和窗口大小改变时更新圆弧
+        window.addEventListener('load', updateArcPath);
+        window.addEventListener('resize', updateArcPath);
     </script>
 </body>
 </html>
