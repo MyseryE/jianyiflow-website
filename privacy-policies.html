@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>隐私政策 | 简易流</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Base styles, adjusted for a more refined, minimalist aesthetic */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fafafa;
+            background-color: #FFFBF5; /* Matches index.html body background */
+            color: #4A5568; /* Consistent text color */
+            line-height: 1.7; /* Consistent line height */
         }
         html {
             scroll-behavior: smooth;
@@ -23,78 +25,148 @@
             border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
+            background: #c1c1c1; /* Matches index.html scrollbar */
             border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #a1a1a1;
+            background: #a1a1a1; /* Matches index.html scrollbar hover */
         }
+
+        /* Hero section gradient colors - copied from index.html for consistency */
+        .hero-gradient-placeholder { /* Renamed to avoid confusion with actual hero section */
+            background: linear-gradient(135deg, #FDB863 0%, #F39C12 100%);
+        }
+
+        /* Card hover effect - consistent with index.html */
         .card-hover {
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            border: 1px solid #EDEDED; /* Ensure border is consistent */
         }
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px); /* Consistent with index.html */
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08); /* Consistent with index.html */
+        }
+
+        /* Warm link and button styles - copied from index.html for consistency */
+        .warm-link {
+            color: #D97706; /* Adjusted to match index.html's brighter warm-link */
+            font-weight: 500;
+        }
+        .warm-link:hover {
+            color: #B45309; /* Adjusted to match index.html's brighter warm-link */
+            text-decoration: underline;
+        }
+        .warm-btn {
+            background-color: #FDB863; /* Adjusted to match index.html's brighter warm-btn */
+            color: white;
+            padding: 0.85rem 2.2rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .warm-btn:hover {
+            background-color: #F39C12; /* Adjusted to match index.html's brighter warm-btn */
+            transform: translateY(-2px);
+        }
+
+        /* Custom icon sizes - copied from index.html for consistency */
+        .icon-lg {
+            width: 3.5rem;
+            height: 3.5rem;
+            stroke-width: 1.5;
+        }
+        .icon-md {
+            width: 2.5rem;
+            height: 2.5rem;
+            stroke-width: 1.5;
+        }
+        .icon-sm {
+            width: 1.25rem;
+            height: 1.25rem;
+            stroke-width: 2;
+        }
+
+        /* Navigation bar background blur effect - copied from index.html for consistency */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Image placeholder for fallback - copied from index.html for consistency */
+        .img-placeholder {
+            background: linear-gradient(135deg, #FDB863 0%, #F39C12 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased">
-
-    <!-- Header Section for Privacy Policies Page -->
-    <header class="bg-white/95 backdrop-blur-sm shadow-sm py-4 fixed w-full z-50 top-0">
-        <nav class="container mx-auto flex justify-between items-center px-4 lg:px-8">
-            <!-- Logo/Site Title - Link back to homepage -->
-            <a href="index.html" class="text-xl lg:text-2xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
+<body class="text-gray-700 antialiased">
+    <!-- 导航栏 - 保持与主页一致的样式 -->
+    <header class="nav-blur shadow-sm py-4 fixed w-full z-50 top-0">
+        <nav class="container mx-auto flex justify-between items-center px-6 lg:px-12">
+            <a href="index.html" class="text-2xl font-bold warm-link">
                 简易流
             </a>
-            <!-- Page Title -->
-            <h1 class="text-lg lg:text-xl font-semibold text-gray-800">隐私政策中心</h1>
-            <!-- Back Button for Mobile -->
-            <a href="index.html" class="text-sm text-indigo-600 hover:text-indigo-700 font-medium lg:hidden">
-                返回主页
-            </a>
+            <h1 class="text-xl lg:text-2xl font-bold text-gray-800">隐私政策中心</h1>
+            <!-- 返回主页按钮在桌面端隐藏，在移动端显示 -->
+            <a href="index.html" class="text-sm warm-link font-medium md:hidden">返回主页</a>
+            <!-- 桌面端导航（由于是隐私政策中心，这里不需要主页的多个导航项，仅保留返回主页） -->
+            <div class="hidden md:block">
+                <a href="index.html" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">返回主页</a>
+            </div>
         </nav>
     </header>
 
-    <!-- Privacy Policies List Section -->
     <section class="py-16 lg:py-24 bg-white mt-16">
-        <div class="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
-            <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-gray-800">选择您感兴趣的隐私政策</h2>
+        <div class="container mx-auto px-6 lg:px-12 max-w-4xl text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-gray-800">
+                选择您感兴趣的隐私政策
+            </h2>
             <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
                 简易流致力于保护您的数据隐私。您可以在此查找并查阅我们所有应用程序的详细隐私政策。
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- EvoTune Privacy Policy Link -->
-                <a href="evotune-privacy-policy.html" class="block bg-indigo-50 rounded-lg shadow-md p-6 transform card-hover border border-indigo-100">
-                    <h3 class="text-2xl font-bold text-indigo-700 mb-2">EvoTune 练声日常</h3>
-                    <p class="text-gray-600">查看 EvoTune 练声日常应用的隐私政策。</p>
+                <a href="evotune-privacy-policy.html" class="block bg-amber-50 rounded-2xl shadow-sm p-8 transform card-hover border border-amber-100 flex flex-col items-center justify-center">
+                    <!-- EvoTune 应用图标 -->
+                    <div class="w-24 h-24 lg:w-32 lg:h-32 rounded-full mb-4 overflow-hidden border-2 border-amber-200 shadow-md">
+                        <img src="EvoTune图标2048.png" alt="EvoTune App Icon" class="w-full h-full object-cover"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-full img-placeholder text-sm p-2\'>EvoTune图标加载失败</div>'">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">EvoTune 练声日常</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">查看 EvoTune 练声日常应用的隐私政策。</p>
                 </a>
 
-                <!-- Placeholder for future apps -->
-                <div class="bg-gray-100 rounded-lg shadow-md p-6 border border-gray-200 text-gray-500 flex flex-col justify-center items-center">
-                    <div class="text-4xl mb-2">🚀</div>
-                    <h3 class="text-2xl font-bold mb-2">更多应用即将推出...</h3>
-                    <p class="text-gray-600">敬请期待我们未来应用的隐私政策。</p>
+                <div class="bg-gray-100 rounded-2xl shadow-sm p-8 border border-gray-200 text-gray-500 flex flex-col justify-center items-center">
+                    <div class="text-5xl mb-6 text-gray-400">🚀</div> <!-- 保持火箭图标的颜色为柔和的灰色 -->
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">更多应用即将推出...</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">敬请期待我们未来应用的隐私政策。</p>
                 </div>
-                <!-- When you have a new app, you can add another link here, e.g.: -->
-                <!--
-                <a href="your-new-app-privacy-policy.html" class="block bg-green-50 rounded-lg shadow-md p-6 transform card-hover border border-green-100">
-                    <h3 class="text-2xl font-bold text-green-700 mb-2">您的新应用名称</h3>
-                    <p class="text-gray-600">查看您的新应用名称的隐私政策。</p>
-                </a>
-                -->
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="container mx-auto text-center px-4 lg:px-8">
-            <p class="mb-2">&copy; 2025 简易流 Jianyiflow.com. All rights reserved.</p>
-            <p class="text-sm text-gray-400">由 <span class="font-semibold text-white">简易</span> 精心打造，为您带来幸福与成长</p>
+    <!-- 页脚 - 保持与主页一致的样式和内容 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="text-center md:text-left">
+                    <p class="mb-2 text-base">&copy; 2025 简易流 Jianyiflow.com. All rights reserved.</p>
+                    <p class="text-sm text-gray-400">由 <span class="font-semibold text-white">家毅</span> 精心打造，为您带来幸福与成长</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <!-- 隐私政策链接指向当前页面，或指向一个通用的隐私政策文档 -->
+                    <a href="privacy-policies.html" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                        隐私政策
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
-
 </body>
 </html>
