@@ -6,113 +6,151 @@
     <title>简易流 | jianyiflow.com</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for the Inter font */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7fafc; /* Light gray background */
+            background-color: #fafafa;
         }
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-        /* Custom scrollbar for better aesthetics */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
-            border-radius: 10px;
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
+            background: #c1c1c1;
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            background: #a1a1a1;
         }
-        /* Loading spinner animation */
-        .loading-spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: #4f46e5;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 8px;
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-800 antialiased">
 
     <!-- Header Section -->
-    <header class="bg-white shadow-sm py-4 fixed w-full z-10 top-0">
-        <nav class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
-            <!-- Logo/Site Title -->
-            <a href="#hero" class="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition duration-300 ease-in-out rounded-md p-2">简易流 Jianyiflow.com</a>
-            <!-- Navigation Links -->
-            <div class="space-x-4">
-                <a href="#evotune" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2">EvoTune 练声日常</a>
-                <a href="#future-apps" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2">未来应用</a>
-                <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2">关于简易</a>
-                <a href="#contact" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2">联系我们</a>
+    <header class="bg-white/95 backdrop-blur-sm shadow-sm py-4 fixed w-full z-50 top-0">
+        <nav class="container mx-auto flex justify-between items-center px-4 lg:px-8">
+            <!-- Logo -->
+            <a href="#hero" class="text-xl lg:text-2xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
+                简易流
+            </a>
+            <!-- Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#evotune" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">EvoTune</a>
+                <a href="#future-apps" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">未来应用</a>
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">关于</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">联系</a>
             </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#evotune" class="block py-2 text-gray-600 hover:text-indigo-600">EvoTune</a>
+                <a href="#future-apps" class="block py-2 text-gray-600 hover:text-indigo-600">未来应用</a>
+                <a href="#about" class="block py-2 text-gray-600 hover:text-indigo-600">关于</a>
+                <a href="#contact" class="block py-2 text-gray-600 hover:text-indigo-600">联系</a>
+            </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-24 mt-16 rounded-b-lg shadow-lg">
-        <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
-                欢迎来到简易流 <br> 让生活更幸福、更简单
+    <section id="hero" class="hero-gradient text-white py-20 lg:py-32 mt-16">
+        <div class="container mx-auto text-center px-4 lg:px-8">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                欢迎来到简易流
             </h1>
-            <p class="text-xl md:text-2xl mb-8 font-light opacity-90 animate-fade-in-up">
-                我是<span class="font-semibold">简易</span>，致力于通过创新的软件和应用，<br class="hidden sm:inline"> 助您在命运、健康与心理层面实现成长与平衡。
+            <p class="text-lg md:text-xl lg:text-2xl mb-8 font-light opacity-90 max-w-3xl mx-auto">
+                让生活更幸福、更简单<br class="hidden sm:block">
+                通过创新的软件和应用，助您实现成长与平衡
             </p>
-            <a href="#evotune" class="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition duration-300 ease-in-out transform">
+            <a href="#evotune" class="inline-block bg-white text-indigo-600 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300">
                 探索我们的应用
             </a>
         </div>
     </section>
 
     <!-- EvoTune Section -->
-    <section id="evotune" class="py-20 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
-                EvoTune 练声日常：您的专属练声伙伴
-            </h2>
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
-                <div class="md:w-1/2">
-                    <img src="https://placehold.co/600x400/93c5fd/ffffff?text=EvoTune+练声日常" alt="EvoTune 练声日常软件截图" class="rounded-xl shadow-xl border border-gray-200 w-full h-auto object-cover">
-                </div>
-                <div class="md:w-1/2 text-left space-y-6">
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        EvoTune 练声日常是简易流推出的首款核心产品，旨在帮助声乐爱好者、专业歌手以及任何希望改善发声的用户，进行科学、高效的日常练声。它提供了个性化的训练计划、精准的音高反馈和进步追踪，让您的声音潜力得到充分释放。
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li><strong class="text-indigo-600">个性化练声计划：</strong> 根据您的声线和目标，智能推荐训练内容。</li>
-                        <li><strong class="text-indigo-600">实时音高反馈：</strong> 精准识别您的音高，助您找准每一个音。</li>
-                        <li><strong class="text-indigo-600">进步可视化：</strong> 详细记录您的练声数据，见证每一次成长。</li>
-                        <li><strong class="text-indigo-600">多种练习模式：</strong> 满足不同阶段和需求的用户。</li>
-                    </ul>
-                    <div class="flex flex-wrap gap-4 mt-6">
-                        <a href="#" class="inline-block bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 hover:scale-105 transition duration-300 ease-in-out transform">
-                            立即体验 EvoTune (即将上线)
-                        </a>
-                        <button id="generate-evotune-tips-btn" class="inline-flex items-center justify-center bg-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-purple-700 hover:scale-105 transition duration-300 ease-in-out transform">
-                            ✨ 获取练声建议
-                        </button>
+    <section id="evotune" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-800">
+                    EvoTune 练声日常
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    您的专属练声伙伴，科学高效的日常练声解决方案
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Image -->
+                <div class="order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl p-8 aspect-square flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🎵</div>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">EvoTune</h3>
+                                <p class="text-gray-600">练声日常</p>
+                            </div>
+                        </div>
                     </div>
-                    <div id="evotune-tips-output" class="mt-8 p-4 bg-indigo-50 rounded-lg border border-indigo-200 text-gray-700 hidden">
-                        <!-- EvoTune tips will be displayed here -->
+                </div>
+                
+                <!-- Content -->
+                <div class="order-1 lg:order-2 space-y-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        EvoTune 练声日常是简易流推出的首款核心产品，旨在帮助声乐爱好者、专业歌手以及任何希望改善发声的用户，进行科学、高效的日常练声。
+                    </p>
+                    
+                    <div class="grid gap-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">个性化练声计划</h4>
+                                <p class="text-gray-600 text-sm">根据您的声线和目标，智能推荐训练内容</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">实时音高反馈</h4>
+                                <p class="text-gray-600 text-sm">精准识别您的音高，助您找准每一个音</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">进步可视化</h4>
+                                <p class="text-gray-600 text-sm">详细记录您的练声数据，见证每一次成长</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <a href="#" class="inline-block bg-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 hover:scale-105 transition-all duration-300">
+                            立即体验 (即将上线)
+                        </a>
                     </div>
                 </div>
             </div>
@@ -120,52 +158,42 @@
     </section>
 
     <!-- Future Apps Section -->
-    <section id="future-apps" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
-                探索未来：更多简易流应用即将到来
-            </h2>
-            <p class="text-center text-xl text-gray-700 mb-12 max-w-3xl mx-auto">
-                简易流致力于从多维度提升您的生命质量。除了EvoTune，我们正在积极开发一系列关于个体命运、健康、心理的创新应用，敬请期待它们为您带来的改变。
-            </p>
-            <div class="text-center mb-12">
-                <button id="generate-inspiration-btn" class="inline-flex items-center justify-center bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 hover:scale-105 transition duration-300 ease-in-out transform">
-                    💡 获取灵感短语
-                </button>
-            </div>
-            <div id="inspiration-output" class="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200 text-gray-700 hidden max-w-3xl mx-auto">
-                <!-- Inspiration text will be displayed here -->
+    <section id="future-apps" class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-800">
+                    探索未来
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    简易流致力于从多维度提升您的生命质量。除了EvoTune，我们正在积极开发一系列关于个体命运、健康、心理的创新应用
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Destiny App Card -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:scale-105 transition duration-300 ease-in-out border border-gray-200">
-                    <div class="text-indigo-500 text-5xl mb-4 text-center">
-                        🔮
-                    </div>
-                    <h3 class="text-2xl font-bold text-center mb-4 text-gray-800">个体命运探索</h3>
-                    <p class="text-gray-600 text-center">
-                        深入洞察个人特质与生命轨迹，提供智慧指引，助您更好地规划人生，把握机遇，化解挑战。
+                <div class="bg-white rounded-2xl shadow-sm p-8 card-hover border border-gray-100">
+                    <div class="text-indigo-500 text-5xl mb-6 text-center">🔮</div>
+                    <h3 class="text-xl font-bold text-center mb-4 text-gray-800">个体命运探索</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">
+                        深入洞察个人特质与生命轨迹，提供智慧指引，助您更好地规划人生，把握机遇
                     </p>
                 </div>
+                
                 <!-- Health App Card -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:scale-105 transition duration-300 ease-in-out border border-gray-200">
-                    <div class="text-green-500 text-5xl mb-4 text-center">
-                        ❤️‍🩹
-                    </div>
-                    <h3 class="text-2xl font-bold text-center mb-4 text-gray-800">身心健康管理</h3>
-                    <p class="text-gray-600 text-center">
-                        从日常习惯到情绪管理，提供科学、实用的健康解决方案，帮助您拥有充沛的精力和和谐的身心。
+                <div class="bg-white rounded-2xl shadow-sm p-8 card-hover border border-gray-100">
+                    <div class="text-green-500 text-5xl mb-6 text-center">💚</div>
+                    <h3 class="text-xl font-bold text-center mb-4 text-gray-800">身心健康管理</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">
+                        从日常习惯到情绪管理，提供科学、实用的健康解决方案，帮助您拥有充沛的精力
                     </p>
                 </div>
+                
                 <!-- Psychology App Card -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:scale-105 transition duration-300 ease-in-out border border-gray-200">
-                    <div class="text-yellow-500 text-5xl mb-4 text-center">
-                        🧠
-                    </div>
-                    <h3 class="text-2xl font-bold text-center mb-4 text-gray-800">心理成长向导</h3>
-                    <p class="text-gray-600 text-center">
-                        构建积极心态，提升情商，提供专业的心理疏导和成长工具，助您更好地应对生活压力，实现自我超越。
+                <div class="bg-white rounded-2xl shadow-sm p-8 card-hover border border-gray-100">
+                    <div class="text-yellow-500 text-5xl mb-6 text-center">🧠</div>
+                    <h3 class="text-xl font-bold text-center mb-4 text-gray-800">心理成长向导</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">
+                        构建积极心态，提升情商，提供专业的心理疏导和成长工具，助您实现自我超越
                     </p>
                 </div>
             </div>
@@ -173,24 +201,33 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
-                关于简易流与简易
-            </h2>
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
-                <div class="md:w-1/3 flex justify-center">
-                    <img src="https://placehold.co/300x300/a78bfa/ffffff?text=简易" alt="简易的头像" class="rounded-full shadow-lg border-4 border-indigo-200 w-64 h-64 object-cover">
+    <section id="about" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-800">
+                    关于简易流
+                </h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-12 items-center">
+                <div class="lg:col-span-1 flex justify-center">
+                    <div class="w-48 h-48 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">👋</div>
+                            <p class="text-lg font-semibold text-gray-800">简易</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:w-2/3 text-left space-y-6">
+                
+                <div class="lg:col-span-2 space-y-6">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        大家好，我是<span class="font-semibold">简易</span>，jianyiflow.com 的创始人。我坚信每个人都值得拥有一个幸福、便捷且充满成长的生活。凭借在软件开发领域的经验和对个人福祉的深刻理解，我创立了简易流，致力于打造一系列高品质、实用的应用程序。
+                        大家好，我是<span class="font-semibold text-indigo-600">简易</span>，jianyiflow.com 的创始人。我坚信每个人都值得拥有一个幸福、便捷且充满成长的生活。
                     </p>
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        从最初的“EvoTune练声日常”到即将推出的关于个体命运、健康与心理的创新应用，我的目标始终如一：为您提供强大而简易的工具，帮助您发现并解锁内在的潜力，让生活流淌出更美好的旋律。
+                        凭借在软件开发领域的经验和对个人福祉的深刻理解，我创立了简易流，致力于打造一系列高品质、实用的应用程序。
                     </p>
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        感谢您的到来，期待与您一同踏上这场关于幸福与成长的旅程。
+                        从最初的"EvoTune练声日常"到即将推出的关于个体命运、健康与心理的创新应用，我的目标始终如一：为您提供强大而简易的工具，帮助您发现并解锁内在的潜力。
                     </p>
                 </div>
             </div>
@@ -198,147 +235,64 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-8 text-gray-800">
+    <section id="contact" class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8 text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-gray-800">
                 联系我们
             </h2>
-            <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-                如果您对简易流的应用有任何疑问、建议或合作意向，欢迎随时与我们联系。
+            <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+                如果您对简易流的应用有任何疑问、建议或合作意向，欢迎随时与我们联系
             </p>
-            <div class="flex flex-col items-center space-y-6">
-                <!-- Email -->
-                <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-sm border border-gray-200">
-                    <p class="text-lg font-semibold text-gray-700 mb-2">邮件联系:</p>
-                    <a href="mailto:Jianyi8679@outlook.com" class="text-indigo-600 hover:text-indigo-800 text-xl font-bold transition duration-300 ease-in-out">
+            
+            <div class="max-w-md mx-auto">
+                <div class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+                    <div class="text-indigo-500 text-4xl mb-4">📧</div>
+                    <p class="text-lg font-semibold text-gray-700 mb-2">邮件联系</p>
+                    <a href="mailto:Jianyi8679@outlook.com" class="text-indigo-600 hover:text-indigo-700 text-lg font-medium transition-colors break-all">
                         Jianyi8679@outlook.com
                     </a>
                 </div>
-                <!-- Social Media (Optional, add your links) -->
-                <!--
-                <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-sm border border-gray-200">
-                    <p class="text-lg font-semibold text-gray-700 mb-2">关注我们:</p>
-                    <div class="flex justify-center space-x-6">
-                        <a href="#" class="text-gray-600 hover:text-indigo-600 text-3xl transition duration-300 ease-in-out">
-                            <i class="fab fa-wechat"></i> WeChat
-                        </a>
-                        <a href="#" class="text-gray-600 hover:text-indigo-600 text-3xl transition duration-300 ease-in-out">
-                            <i class="fab fa-weibo"></i> Weibo
-                        </a>
-                    </div>
-                </div>
-                -->
             </div>
         </div>
     </section>
 
     <!-- Footer Section -->
     <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <p>&copy; 2025 简易流 Jianyiflow.com. All rights reserved.</p>
-            <p class="mt-2 text-sm">由 <span class="font-semibold">简易</span> 精心打造，为您带来幸福与成长。</p>
+        <div class="container mx-auto text-center px-4 lg:px-8">
+            <p class="mb-2">&copy; 2025 简易流 Jianyiflow.com. All rights reserved.</p>
+            <p class="text-sm text-gray-400">由 <span class="font-semibold text-white">简易</span> 精心打造，为您带来幸福与成长</p>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add a simple fade-in animation for hero section elements on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const heroTitle = document.querySelector('.animate-fade-in-down');
-            const heroSubtitle = document.querySelector('.animate-fade-in-up');
-
-            if (heroTitle) {
-                heroTitle.style.opacity = '0';
-                heroTitle.style.transform = 'translateY(-20px)';
-                setTimeout(() => {
-                    heroTitle.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-                    heroTitle.style.opacity = '1';
-                    heroTitle.style.transform = 'translateY(0)';
-                }, 100);
-            }
-
-            if (heroSubtitle) {
-                heroSubtitle.style.opacity = '0';
-                heroSubtitle.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    heroSubtitle.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-                    heroSubtitle.style.opacity = '1';
-                    heroSubtitle.style.transform = 'translateY(0)';
-                }, 300);
-            }
-
-            // Get elements for LLM features
-            const generateEvotuneTipsBtn = document.getElementById('generate-evotune-tips-btn');
-            const evotuneTipsOutput = document.getElementById('evotune-tips-output');
-            const generateInspirationBtn = document.getElementById('generate-inspiration-btn');
-            const inspirationOutput = document.getElementById('inspiration-output');
-
-            // --- Function to call Gemini API ---
-            async function callGeminiAPI(prompt, outputElement) {
-                outputElement.innerHTML = '<span class="loading-spinner"></span> 正在生成中，请稍候...';
-                outputElement.classList.remove('hidden');
-
-                let chatHistory = [];
-                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                const payload = { contents: chatHistory };
-                const apiKey = ""; // Canvas will provide this at runtime
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
-
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(`API error: ${response.status} - ${errorData.error.message || 'Unknown error'}`);
-                    }
-
-                    const result = await response.json();
-
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        outputElement.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Preserve newlines
-                    } else {
-                        outputElement.innerHTML = '<p class="text-red-500">未能获取到有效的生成内容。</p>';
-                    }
-                } catch (error) {
-                    console.error('Gemini API Error:', error);
-                    outputElement.innerHTML = `<p class="text-red-500">生成失败：${error.message} 请稍后再试。</p>`;
                 }
-            }
-
-            // --- Event listener for EvoTune Tips button ---
-            if (generateEvotuneTipsBtn) {
-                generateEvotuneTipsBtn.addEventListener('click', () => {
-                    const prompt = "生成一些关于声乐日常练声的实用技巧和建议，包括呼吸、音准、共鸣和日常护理等方面。用中文输出，并以列表形式呈现。";
-                    callGeminiAPI(prompt, evotuneTipsOutput);
-                });
-            }
-
-            // --- Event listener for Inspiration button ---
-            if (generateInspirationBtn) {
-                generateInspirationBtn.addEventListener('click', () => {
-                    const prompt = "生成一段积极向上的中文灵感文字，内容关于幸福、健康和心理成长，长度在80-120字之间。";
-                    callGeminiAPI(prompt, inspirationOutput);
-                });
-            }
+            });
         });
     </script>
 </body>
 </html>
-
