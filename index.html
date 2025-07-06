@@ -177,6 +177,22 @@
                 height: 10rem;
             }
         }
+
+        /* EvoTune 和一账一算图标样式：移除边框，添加阴影和透明圆角 */
+        .app-icon-wrapper {
+            border: none !important; /* 移除边框 */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05); /* 更柔和的阴影 */
+            border-radius: 3rem; /* 确保圆角效果 */
+            overflow: hidden; /* 确保内容不溢出圆角 */
+            background-color: rgba(255, 255, 255, 0.2); /* 轻微透明背景 */
+            backdrop-filter: blur(5px); /* 添加一点模糊效果，增强透明感 */
+            -webkit-backdrop-filter: blur(5px); /* Safari兼容性 */
+        }
+
+        /* 重置 EvoTune 和一账一算部分的背景，取消渐变 */
+        #evotune, #yzyz, #fate {
+            background: #FFFBF5; /* 恢复为与hero区域相同的背景色 */
+        }
     </style>
 </head>
 <body class="text-gray-700 antialiased">
@@ -186,8 +202,10 @@
             <a href="#hero" class="text-2xl font-bold warm-link">
                 简易流
             </a>
-            <div class="hidden md:flex space-x-10">
+            <div class="hidden md:flex space-x-8">
                 <a href="#evotune" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">EvoTune</a>
+                <a href="#yzyz" class="text-gray-600 hover:text-blue-700 font-medium transition-colors duration-300">一帐一算</a>
+                <a href="#fate" class="text-gray-600 hover:text-purple-700 font-medium transition-colors duration-300">Fate并肩命运</a>
                 <a href="#future-apps" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">未来应用</a>
                 <a href="#about" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">关于</a>
                 <a href="#contact" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">联系</a>
@@ -202,6 +220,8 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <div class="px-6 py-3 space-y-2">
                 <a href="#evotune" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">EvoTune</a>
+                <a href="#yzyz" class="block py-2 text-gray-700 hover:text-blue-700 font-medium transition-colors">一帐一算</a>
+                <a href="#fate" class="block py-2 text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Fate并肩命运</a>
                 <a href="#future-apps" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">未来应用</a>
                 <a href="#about" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">关于</a>
                 <a href="#contact" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">联系</a>
@@ -230,14 +250,14 @@
         </div>
     </section>
 
-    <section id="evotune" class="section-after-hero py-20 lg:py-32 bg-amber-50">
+    <section id="evotune" class="section-after-hero py-20 lg:py-32">
         <div class="container mx-auto px-6 lg:px-12">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div class="flex justify-center lg:justify-start order-2 lg:order-1">
-                    <div class="w-48 h-48 lg:w-72 lg:h-72 rounded-full shadow-lg border-4 border-amber-200 img-placeholder">
-                        <img src="EvoTune图标2048.png" alt="EvoTune 练声日常图标" 
-                             class="w-full h-full object-cover rounded-full" 
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-full img-placeholder\'>EvoTune</div>'">
+                    <div class="w-48 h-48 lg:w-72 lg:h-72 app-icon-wrapper img-placeholder">
+                        <img src="EvoTune图标512.png" alt="EvoTune 练声日常图标" 
+                             class="w-full h-full object-cover rounded-[3rem]" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-[3rem] img-placeholder\'>EvoTune</div>'">
                     </div>
                 </div>
                 
@@ -286,6 +306,133 @@
 
                     <div class="pt-6">
                         <a href="#" class="inline-block warm-btn font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300">
+                            立即体验 (即将上线)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="yzyz" class="py-20 lg:py-32">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="text-center lg:text-left space-y-6 order-2 lg:order-1">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-blue-900 leading-tight">
+                        一帐一算
+                    </h2>
+                    <p class="text-lg font-medium text-blue-800">
+                        一页就是一本账，一笔就是一次算，用聊天的方式，把账记得更清楚。
+                    </p>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center justify-center lg:justify-start">
+                            <svg class="icon-md text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            核心功能
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-blue-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>聊天式交互记账</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-blue-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>键盘就是计算器</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-blue-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>自动汇总可导出</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-blue-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>货物/金额导向可选</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="#" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300 py-[0.85rem] px-[2.2rem] text-[1.1rem]">
+                            立即体验 (即将上线)
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center lg:justify-end order-1 lg:order-2">
+                    <div class="w-48 h-48 lg:w-72 lg:h-72 app-icon-wrapper flex items-center justify-center" style="background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);">
+                        <img src="记账512白色.png" alt="一帐一算 App 图标" 
+                             class="w-full h-full object-cover rounded-[3rem]"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-[3rem] bg-blue-500 flex items-center justify-center text-white font-bold text-xl\'>一帐一算</div>'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fate" class="py-20 lg:py-32">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="flex justify-center lg:justify-start order-2 lg:order-1">
+                    <div class="w-48 h-48 lg:w-72 lg:h-72 app-icon-wrapper img-placeholder" style="background: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 100%);">
+                        <img src="fate512.png" alt="Fate并肩命运 App 图标" 
+                             class="w-full h-full object-cover rounded-[3rem]" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-[3rem] bg-purple-500 flex items-center justify-center text-white font-bold text-xl\'>Fate并肩命运</div>'">
+                    </div>
+                </div>
+                
+                <div class="text-center lg:text-left space-y-6 order-1 lg:order-2">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-purple-900 leading-tight">
+                        Fate并肩命运
+                    </h2>
+                    <p class="text-lg font-medium text-purple-800">
+                        洞察命盘玄机，独家秘曜精研；白话解析流年运势，人人可懂；阳宅风水、卜卦测命一应俱全，一次开启，尽览命理三界。
+                    </p>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center justify-center lg:justify-start">
+                            <svg class="icon-md text-purple-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            核心功能
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-purple-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>独家秘传紫微星耀</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-purple-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>通俗阳宅风水测定</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-purple-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>AI提示词生成</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="icon-sm text-purple-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>精确到流日运势</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="#" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-300 py-[0.85rem] px-[2.2rem] text-[1.1rem]">
                             立即体验 (即将上线)
                         </a>
                     </div>
@@ -351,8 +498,8 @@
             </div>
             <div class="grid lg:grid-cols-3 gap-12 lg:gap-16 items-center">
                 <div class="lg:col-span-1 flex justify-center">
-                    <div class="avatar-container">
-                        <img src="小黑.png" alt="家毅头像" 
+                    <div class="avatar-container shadow-2xl">
+                        <img src="小黑512.png" alt="家毅头像" 
                              onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-amber-100 to-orange-200 rounded-full flex items-center justify-center shadow-lg\'><svg class=\'icon-lg text-amber-800\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M13 10V3L4 14h7v7l9-11h-7z\'></path></svg></div>'">
                     </div>
                 </div>
