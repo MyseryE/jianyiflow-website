@@ -103,19 +103,54 @@
             font-size: 1.5rem;
             font-weight: bold;
         }
+
+        /* App icon wrapper for transparent rounded corners and shadow, consistent with index.html */
+        .app-icon-wrapper {
+            border: none !important; /* Remove border */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05); /* Soft shadow */
+            border-radius: 3rem; /* Rounded corners */
+            overflow: hidden; /* Ensure content doesn't overflow rounded corners */
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+            backdrop-filter: blur(5px); /* Add blur for transparent effect */
+            -webkit-backdrop-filter: blur(5px); /* Safari compatibility */
+        }
+
+        /* Adjustments for icons in privacy-policies.html */
+        .app-icon-wrapper-small {
+            width: 6rem; /* Smaller size for privacy policy page */
+            height: 6rem;
+            border-radius: 2rem; /* Adjusted border-radius for smaller size */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08), 0 3px 3px rgba(0, 0, 0, 0.03); /* Smaller shadow */
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex; /* Ensure content is centered if using placeholder */
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: none !important;
+        }
+
+        /* Specific gradient for EvoTune placeholder if image fails */
+        .evotune-placeholder-bg {
+            background: linear-gradient(135deg, #FDB863 0%, #F39C12 100%);
+        }
+
+        /* Specific gradient for Yzyz placeholder if image fails */
+        .yzyz-placeholder-bg {
+            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+        }
+
     </style>
 </head>
 <body class="text-gray-700 antialiased">
-    <!-- 导航栏 - 保持与主页一致的样式 -->
     <header class="nav-blur shadow-sm py-4 fixed w-full z-50 top-0">
         <nav class="container mx-auto flex justify-between items-center px-6 lg:px-12">
             <a href="index.html" class="text-2xl font-bold warm-link">
                 简易流
             </a>
             <h1 class="text-xl lg:text-2xl font-bold text-gray-800">隐私政策中心</h1>
-            <!-- 返回主页按钮在桌面端隐藏，在移动端显示 -->
             <a href="index.html" class="text-sm warm-link font-medium md:hidden">返回主页</a>
-            <!-- 桌面端导航（由于是隐私政策中心，这里不需要主页的多个导航项，仅保留返回主页） -->
             <div class="hidden md:block">
                 <a href="index.html" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">返回主页</a>
             </div>
@@ -133,17 +168,25 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <a href="evotune-privacy-policy.html" class="block bg-amber-50 rounded-2xl shadow-sm p-8 transform card-hover border border-amber-100 flex flex-col items-center justify-center">
-                    <!-- EvoTune 应用图标 -->
-                    <div class="w-24 h-24 lg:w-32 lg:h-32 rounded-full mb-4 overflow-hidden border-2 border-amber-200 shadow-md">
-                        <img src="EvoTune图标2048.png" alt="EvoTune App Icon" class="w-full h-full object-cover"
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-full img-placeholder text-sm p-2\'>EvoTune图标加载失败</div>'">
+                    <div class="app-icon-wrapper-small mb-4">
+                        <img src="EvoTune图标512.png" alt="EvoTune App Icon" class="w-full h-full object-cover rounded-2xl"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-2xl evotune-placeholder-bg text-white text-sm font-bold flex items-center justify-center\'>EvoTune</div>'">
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-2">EvoTune 练声日常</h3>
                     <p class="text-gray-600 text-center leading-relaxed">查看 EvoTune 练声日常应用的隐私政策。</p>
                 </a>
 
-                <div class="bg-gray-100 rounded-2xl shadow-sm p-8 border border-gray-200 text-gray-500 flex flex-col justify-center items-center">
-                    <div class="text-5xl mb-6 text-gray-400">🚀</div> <!-- 保持火箭图标的颜色为柔和的灰色 -->
+                <a href="calculator_privacy-policy.html" class="block bg-blue-50 rounded-2xl shadow-sm p-8 transform card-hover border border-blue-100 flex flex-col items-center justify-center">
+                    <div class="app-icon-wrapper-small mb-4">
+                        <img src="记账512白色.png" alt="一账一算 App Icon" class="w-full h-full object-cover rounded-2xl"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-2xl yzyz-placeholder-bg text-white text-sm font-bold flex items-center justify-center\'>一账一算</div>'">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">一帐一算</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">查看一帐一算应用的隐私政策。</p>
+                </a>
+                
+                <div class="md:col-span-2 bg-gray-100 rounded-2xl shadow-sm p-8 border border-gray-200 text-gray-500 flex flex-col justify-center items-center">
+                    <div class="text-5xl mb-6 text-gray-400">🚀</div> 
                     <h3 class="text-xl font-bold text-gray-800 mb-4">更多应用即将推出...</h3>
                     <p class="text-gray-600 text-center leading-relaxed">敬请期待我们未来应用的隐私政策。</p>
                 </div>
@@ -151,7 +194,6 @@
         </div>
     </section>
 
-    <!-- 页脚 - 保持与主页一致的样式和内容 -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-6 lg:px-12">
             <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
@@ -160,7 +202,6 @@
                     <p class="text-sm text-gray-400">由 <span class="font-semibold text-white">家毅</span> 精心打造，为您带来幸福与成长</p>
                 </div>
                 <div class="text-center md:text-right">
-                    <!-- 隐私政策链接指向当前页面，或指向一个通用的隐私政策文档 -->
                     <a href="privacy-policies.html" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
                         隐私政策
                     </a>
