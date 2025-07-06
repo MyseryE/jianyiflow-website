@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Base styles, adjusted for a more refined, minimalist aesthetic */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #FFFBF5;
@@ -32,20 +31,18 @@
             background: #a1a1a1;
         }
         
-        /* 英雄区域渐变色 - 更温暖浅色调 */
         .hero-gradient {
             background: linear-gradient(135deg, #FDB863 0%, #F39C12 100%);
             position: relative;
             overflow: hidden;
         }
 
-        /* 优化后的英雄区域底部圆弧 - 反向圆弧（凹向上），响应式动态变化 */
         .hero-arc-bottom {
             position: absolute;
             bottom: -1px;
             left: 0;
             width: 100%;
-            height: 120px; /* Base height, adjusted by JS for responsiveness */
+            height: 120px;
             overflow: hidden;
             pointer-events: none;
             z-index: 1;
@@ -57,7 +54,6 @@
             margin-left: -1px;
         }
 
-        /* Responsive arc height adjustments - these are superseded by JS, but kept for clarity/fallback */
         @media (max-width: 1024px) {
             .hero-arc-bottom {
                 height: 100px;
@@ -74,14 +70,12 @@
             }
         }
 
-        /* 确保下一个section与圆弧完美衔接 */
         .section-after-hero {
             position: relative;
             z-index: 2;
             margin-top: -1px;
         }
 
-        /* 卡片悬停效果 */
         .card-hover {
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
@@ -92,7 +86,6 @@
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
         }
 
-        /* 链接和按钮的暖色调 - 调亮颜色 */
         .warm-link {
             color: #D97706;
             font-weight: 500;
@@ -113,7 +106,6 @@
             transform: translateY(-2px);
         }
 
-        /* 自定义图标大小和颜色 */
         .icon-lg {
             width: 3.5rem;
             height: 3.5rem;
@@ -130,7 +122,6 @@
             stroke-width: 2;
         }
 
-        /* 修复移动端响应式问题 */
         @media (max-width: 768px) {
             .hero-gradient {
                 padding-top: 6rem;
@@ -138,14 +129,12 @@
             }
         }
 
-        /* 导航栏背景模糊效果增强 */
         .nav-blur {
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             background-color: rgba(255, 255, 255, 0.95);
         }
 
-        /* 图片加载失败时的占位符 - 更温暖的颜色 */
         .img-placeholder {
             background: linear-gradient(135deg, #FDB863 0%, #F39C12 100%);
             display: flex;
@@ -156,7 +145,6 @@
             font-weight: bold;
         }
 
-        /* 头像样式 */
         .avatar-container {
             width: 12rem;
             height: 12rem;
@@ -178,20 +166,18 @@
             }
         }
 
-        /* EvoTune 和一账一算图标样式：移除边框，添加阴影和透明圆角 */
         .app-icon-wrapper {
-            border: none !important; /* 移除边框 */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05); /* 更柔和的阴影 */
-            border-radius: 3rem; /* 确保圆角效果 */
-            overflow: hidden; /* 确保内容不溢出圆角 */
-            background-color: rgba(255, 255, 255, 0.2); /* 轻微透明背景 */
-            backdrop-filter: blur(5px); /* 添加一点模糊效果，增强透明感 */
-            -webkit-backdrop-filter: blur(5px); /* Safari兼容性 */
+            border: none !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05);
+            border-radius: 3rem;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
-        /* 重置 EvoTune 和一账一算部分的背景，取消渐变 */
         #evotune, #yzyz, #fate {
-            background: #FFFBF5; /* 恢复为与hero区域相同的背景色 */
+            background: #FFFBF5;
         }
     </style>
 </head>
@@ -205,7 +191,7 @@
             <div class="hidden md:flex space-x-8">
                 <a href="#evotune" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">EvoTune</a>
                 <a href="#yzyz" class="text-gray-600 hover:text-blue-700 font-medium transition-colors duration-300">一帐一算</a>
-                <a href="#fate" class="text-gray-600 hover:text-purple-700 font-medium transition-colors duration-300">Fate并肩命运</a>
+                <a href="#fate" class="text-gray-600 hover:text-purple-700 font-medium transition-colors duration-300">Fate</a>
                 <a href="#future-apps" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">未来应用</a>
                 <a href="#about" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">关于</a>
                 <a href="#contact" class="text-gray-600 hover:text-amber-700 font-medium transition-colors duration-300">联系</a>
@@ -221,7 +207,7 @@
             <div class="px-6 py-3 space-y-2">
                 <a href="#evotune" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">EvoTune</a>
                 <a href="#yzyz" class="block py-2 text-gray-700 hover:text-blue-700 font-medium transition-colors">一帐一算</a>
-                <a href="#fate" class="block py-2 text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Fate并肩命运</a>
+                <a href="#fate" class="block py-2 text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Fate</a>
                 <a href="#future-apps" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">未来应用</a>
                 <a href="#about" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">关于</a>
                 <a href="#contact" class="block py-2 text-gray-700 hover:text-amber-700 font-medium transition-colors">联系</a>
@@ -382,15 +368,15 @@
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div class="flex justify-center lg:justify-start order-2 lg:order-1">
                     <div class="w-48 h-48 lg:w-72 lg:h-72 app-icon-wrapper img-placeholder" style="background: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 100%);">
-                        <img src="fate512.png" alt="Fate并肩命运 App 图标" 
+                        <img src="fate512.png" alt="Fate命运并肩 App 图标" 
                              class="w-full h-full object-cover rounded-[3rem]" 
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-[3rem] bg-purple-500 flex items-center justify-center text-white font-bold text-xl\'>Fate并肩命运</div>'">
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-[3rem] bg-purple-500 flex items-center justify-center text-white font-bold text-xl\'>Fate命运并肩</div>'">
                     </div>
                 </div>
                 
                 <div class="text-center lg:text-left space-y-6 order-1 lg:order-2">
                     <h2 class="text-3xl lg:text-4xl font-bold text-purple-900 leading-tight">
-                        Fate并肩命运
+                        Fate命运并肩
                     </h2>
                     <p class="text-lg font-medium text-purple-800">
                         洞察命盘玄机，独家秘曜精研；白话解析流年运势，人人可懂；阳宅风水、卜卦测命一应俱全，一次开启，尽览命理三界。
@@ -559,7 +545,6 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -568,7 +553,6 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Close mobile menu when clicking on links
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
@@ -576,13 +560,12 @@
             });
         }
 
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const headerOffset = 80; // 固定header高度
+                    const headerOffset = 80;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -594,7 +577,6 @@
             });
         });
 
-        // 添加滚动时导航栏效果
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -604,37 +586,33 @@
             }
         });
 
-        // 动态调整反向圆弧响应式效果
         function updateArcPath() {
             const svg = document.querySelector('.hero-arc-bottom svg');
             const path = svg.querySelector('path');
             const screenWidth = window.innerWidth;
-            let arcHeight; // This will define the peak of the arc
-            let svgViewBoxHeight; // This will define the total height of the SVG viewport
+            let arcHeight;
+            let svgViewBoxHeight;
 
             if (screenWidth <= 480) {
-                arcHeight = 40; // Peak of the arc for small screens
-                svgViewBoxHeight = 60; // Total SVG height for small screens
+                arcHeight = 40;
+                svgViewBoxHeight = 60;
             } else if (screenWidth <= 768) {
-                arcHeight = 50; // Peak of the arc for medium screens
-                svgViewBoxHeight = 80; // Total SVG height for medium screens
+                arcHeight = 50;
+                svgViewBoxHeight = 80;
             } else if (screenWidth <= 1024) {
-                arcHeight = 65; // Peak of the arc for small desktop
-                svgViewBoxHeight = 100; // Total SVG height for small desktop
+                arcHeight = 65;
+                svgViewBoxHeight = 100;
             } else {
-                arcHeight = 80; // Peak of the arc for large desktop
-                svgViewBoxHeight = 120; // Total SVG height for large desktop
+                arcHeight = 80;
+                svgViewBoxHeight = 120;
             }
 
-            // The path needs to be dynamic based on arcHeight and svgViewBoxHeight
-            // M0,0 C[halfWidth],arcHeight [totalWidth - halfWidth],arcHeight 1440,0 L1440,svgViewBoxHeight L0,svgViewBoxHeight Z
             const pathData = `M0,0 C360,${arcHeight} 1080,${arcHeight} 1440,0 L1440,${svgViewBoxHeight} L0,${svgViewBoxHeight} Z`;
             
             path.setAttribute('d', pathData);
             svg.setAttribute('viewBox', `0 0 1440 ${svgViewBoxHeight}`);
         }
 
-        // 页面加载和窗口大小改变时更新圆弧
         window.addEventListener('load', updateArcPath);
         window.addEventListener('resize', updateArcPath);
     </script>
