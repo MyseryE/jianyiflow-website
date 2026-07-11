@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="狗运极佳 / QiPaws 是一款无需注册、隐私友好的传统命理学与生活哲学 AI 工具，支持紫微斗数、四柱八字、奇门遁甲等多种排盘与案例长期记忆 AI 分析。">
+  <title>狗运极佳 QiPaws | 紫微斗数四柱八字 AI 排盘工具</title>
+  <link rel="canonical" href="https://jianyiflow.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jianyiflow.com/">
+  <meta property="og:title" content="狗运极佳 QiPaws | 传统命理学 AI 工具">
+  <meta property="og:description" content="无需注册、隐私友好。支持人和宠物案例管理、多种传统排盘与案例长期记忆 AI 分析。">
+  <meta property="og:image" content="https://jianyiflow.com/fate512.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="fate512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "狗运极佳",
+    "alternateName": "QiPaws",
+    "operatingSystem": "iOS 17+, macOS 14+",
+    "applicationCategory": "EntertainmentApplication",
+    "description": "狗运极佳 / QiPaws 是一款无需注册、隐私友好的传统命理学与生活哲学 AI 工具，支持人和宠物案例管理、传统排盘与长期记忆 AI 分析。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    },
+    "downloadUrl": "https://apps.apple.com/us/app/qipaws-ai-pet-care/id6755094863",
+    "url": "https://jianyiflow.com/qipaws/",
+    "publisher": {
+      "@type": "Person",
+      "name": "家毅 狄"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "狗运极佳 / QiPaws",
+    "url": "https://jianyiflow.com/qipaws/",
+    "logo": "https://jianyiflow.com/fate512.png",
+    "email": "jianyi8679@outlook.com",
+    "sameAs": [
+      "https://apps.apple.com/us/app/qipaws-ai-pet-care/id6755094863"
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="island-theme.css">
+  <style>
+    :root {
+      --primary: #19c8b9;
+      --text: #794f27;
+      --body: #725d42;
+      --muted: #8a7b66;
+      --paper: rgb(247, 243, 223);
+      --cream: #f8f8f0;
+      --border: #c4b89e;
+      --border-strong: #9f927d;
+      --shadow: rgba(61, 52, 40, 0.14);
+      --teal: #82d5bb;
+      --orange: #e59266;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--body);
+      background:
+        radial-gradient(circle, rgba(25, 200, 185, 0.12) 1.5px, transparent 1.5px) 0 0/28px 28px,
+        radial-gradient(circle, rgba(255, 204, 0, 0.10) 1px, transparent 1px) 7px 7px/14px 14px,
+        var(--cream);
+      font-family: Nunito, "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1.75;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(248, 248, 240, 0.92);
+      border-bottom: 2px solid rgba(196, 184, 158, 0.55);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: min(960px, calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: #fff9e3;
+      background: var(--primary);
+      border: 2px solid #0ea99d;
+      border-radius: 12px;
+      box-shadow: 0 4px 0 #0ea99d;
+      transform: rotate(-4deg);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 8px 12px;
+      color: var(--text);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff9e3;
+      background: var(--primary);
+      box-shadow: 0 3px 0 #0ea99d;
+      transform: translateY(-1px);
+    }
+
+    .menu-button {
+      display: none;
+      padding: 8px 14px;
+      color: var(--text);
+      background: #fffdf3;
+      border: 2px solid var(--border-strong);
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 900;
+    }
+
+    .page {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 0 0 32px;
+    }
+
+    .page-stack {
+      display: grid;
+      gap: 28px;
+    }
+
+    .ribbon {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      margin: 0 0 20px;
+      padding: 0 28px;
+      color: #fff;
+      background: var(--orange);
+      clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%, 8% 50%);
+      font-size: inherit;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      border: none;
+      transform: rotate(-2deg);
+      filter: drop-shadow(0 3px 0 rgba(121, 79, 39, 0.2));
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 330px);
+      gap: clamp(24px, 5vw, 48px);
+      align-items: center;
+    }
+
+    .lead {
+      max-width: 560px;
+      margin: 0;
+      color: #634a2e;
+      font-size: clamp(17px, 2vw, 20px);
+      font-weight: 700;
+      line-height: 1.72;
+    }
+
+    .typewriter {
+      color: var(--text);
+    }
+
+    .typewriter::after {
+      content: "";
+      display: inline-block;
+      width: 0.58em;
+      height: 1.05em;
+      margin-left: 4px;
+      vertical-align: -0.12em;
+      background: var(--orange);
+      border-radius: 3px;
+      animation: caret-blink 0.9s steps(1) infinite;
+    }
+
+    .typewriter.done::after {
+      display: none;
+    }
+
+    .feature-line {
+      margin-top: 22px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .hero-icon {
+      width: clamp(120px, 16vw, 154px);
+      height: clamp(120px, 16vw, 154px);
+      border-radius: 34px;
+      box-shadow: 0 7px 0 rgba(121, 79, 39, 0.18);
+    }
+
+    .hero-visual {
+      width: min(330px, 100%);
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+    }
+
+    .hero-claim {
+      display: grid;
+      gap: 10px;
+      width: 100%;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .hero-claim strong {
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .hero-claim span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .hero-mini-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-weight: 900;
+    }
+
+    .hero-mini-list li {
+      padding: 2px 0;
+      color: var(--muted);
+    }
+
+    .hero-mini-list li::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 6px;
+      background: var(--primary);
+      border-radius: 999px;
+      vertical-align: 1px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      color: var(--text);
+      background: #fffdf3;
+      border: 2px solid #fffdf3;
+      border-radius: 50px;
+      box-shadow: 0 5px 0 #bdaea0;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 0 #bdaea0;
+    }
+
+    .button.secondary {
+      background: transparent;
+      border-color: var(--border-strong);
+      box-shadow: 0 2px 4px rgba(61, 52, 40, 0.08);
+    }
+
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      transform: translateX(-50%);
+      animation: scroll-float 1.5s ease-in-out infinite;
+      transition: opacity 0.2s ease;
+    }
+
+    .scroll-cue.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-right: 3px solid var(--orange);
+      border-bottom: 3px solid var(--orange);
+      transform: rotate(45deg);
+    }
+
+    .divider {
+      width: 100%;
+      height: 12px;
+      background: url("divider-line-brown.svg") center/contain no-repeat;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(260px, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .section h2 {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .section-header p,
+    .prose p {
+      margin: 0;
+      color: var(--body);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .prose {
+      display: grid;
+      gap: 16px;
+    }
+
+    .thesis-lead {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(17px, 2vw, 20px);
+      font-weight: 900;
+      line-height: 1.65;
+    }
+
+    .card-system > h2 {
+      margin: 0 0 18px;
+    }
+
+    .algorithm-field {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .algorithm-field .island-pill {
+      min-height: 38px;
+      padding: 0 15px;
+    }
+
+    .algorithm-field .island-pill:nth-child(6n + 1) { background: #889df0; color: #fff; }
+    .algorithm-field .island-pill:nth-child(6n + 2) { background: #82d5bb; color: #fff; }
+    .algorithm-field .island-pill:nth-child(6n + 3) { background: #f7cd67; color: #725d42; }
+    .algorithm-field .island-pill:nth-child(6n + 4) { background: #f8a6b2; color: #fff; }
+    .algorithm-field .island-pill:nth-child(6n + 5) { background: #8ac68a; color: #fff; }
+    .algorithm-field .island-pill:nth-child(6n + 6) { background: #e59266; color: #fff; }
+
+    .island-card {
+      transition: box-shadow 0.25s ease;
+    }
+
+    .island-card.jump-active {
+      animation: island-pop 0.58s cubic-bezier(0.2, 0.9, 0.2, 1);
+      box-shadow: 0 10px 0 rgba(25, 200, 185, 0.16);
+    }
+
+    .ledger {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .ledger-row {
+      display: grid;
+      justify-items: center;
+      gap: 10px;
+      min-height: 116px;
+      padding: 16px;
+      background: rgba(255, 253, 243, 0.42);
+      border: 1px dashed rgba(159, 146, 125, 0.4);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .ledger-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: rgba(247, 205, 103, 0.3);
+      border-radius: 14px;
+    }
+
+    .ledger-icon img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .ledger-term {
+      margin-bottom: 6px;
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .ledger-row:nth-child(2n) .ledger-icon { background: rgba(130, 213, 187, 0.28); }
+    .ledger-row:nth-child(3n) .ledger-icon { background: rgba(136, 157, 240, 0.24); }
+    .ledger-row:nth-child(4n) .ledger-icon { background: rgba(248, 166, 178, 0.28); }
+
+    .ledger-desc {
+      color: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .resource-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .resource-card {
+      display: grid;
+      gap: 10px;
+      padding: 18px 20px;
+      background: rgba(255, 253, 243, 0.52);
+      border: 2px solid rgba(196, 184, 158, 0.55);
+      border-radius: 18px;
+      transition: box-shadow 0.25s ease, transform 0.2s ease;
+    }
+
+    .resource-card:hover {
+      box-shadow: 0 6px 0 rgba(25, 200, 185, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .resource-card--featured {
+      border-color: rgba(229, 146, 102, 0.55);
+      background: rgba(255, 248, 235, 0.72);
+    }
+
+    .resource-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .resource-title {
+      margin: 0;
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    .resource-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      color: #fff;
+      background: var(--primary);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+    }
+
+    .resource-tag--orange { background: var(--orange); }
+    .resource-tag--teal { background: var(--teal); color: #fff; }
+    .resource-tag--blue { background: #889df0; }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      font-size: 15px;
+      font-weight: 900;
+      word-break: break-all;
+    }
+
+    .resource-link::after {
+      content: "↗";
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .resource-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .resource-desc {
+      margin: 0;
+      color: var(--body);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.72;
+    }
+
+    .footer {
+      color: #fff8de;
+      background: #6e8f5b;
+      border-top: 0;
+    }
+
+    .footer-inner {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .footer a,
+    .footer p { color: #fff8de; }
+
+    .beian {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 14px;
+    }
+
+    .beian img {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      margin-right: 6px;
+      vertical-align: -3px;
+    }
+
+    .theme-credit {
+      grid-column: 1 / -1;
+      color: rgba(255, 248, 222, 0.86);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .theme-credit a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @keyframes island-pop {
+      0% { transform: translateY(22px) scale(0.985); }
+      55% { transform: translateY(-5px) scale(1.01); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    @keyframes caret-blink {
+      0%, 45% { opacity: 1; }
+      46%, 100% { opacity: 0; }
+    }
+
+    @keyframes scroll-float {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 8px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .island-card,
+      .nav-links a,
+      .button {
+        transition: none;
+      }
+      .island-card.jump-active,
+      .typewriter::after,
+      .scroll-cue {
+        animation: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .menu-button { display: inline-flex; }
+
+      .nav-links {
+        position: absolute;
+        inset: 70px 12px auto;
+        display: none;
+        padding: 12px;
+        background: var(--paper);
+        border: 2px solid var(--border);
+        border-radius: 20px;
+        box-shadow: 0 8px 24px var(--shadow);
+      }
+
+      .nav-links.open {
+        display: grid;
+        justify-content: stretch;
+      }
+
+      .hero-grid,
+      .section-header,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .algorithm-field {
+        justify-content: flex-start;
+      }
+
+      .ledger {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .hero-visual { justify-self: center; }
+
+      .footer-inner,
+      .beian {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page { width: min(100% - 20px, 960px); padding-bottom: 16px; }
+      .brand span:last-child { display: none; }
+      .button { width: 100%; }
+      .hero-actions { display: grid; }
+    }
+
+    @media (max-width: 340px) {
+      .ledger {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="#top" aria-label="简易流首页">
+        <span class="brand-mark">流</span>
+        <span>简易流</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">菜单</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#top">首页</a>
+        <a href="qipaws/">产品介绍</a>
+        <a href="#system">算法</a>
+        <a href="#free-paipan">免费排盘</a>
+        <a href="#animals">宠物友好</a>
+        <a href="privacy-policies.html">政策中心</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page" id="top">
+    <div class="page-stack">
+    <section class="island-card hero" aria-label="狗运极佳">
+      <div class="hero-grid">
+        <div>
+          <h1 class="ribbon">狗运极佳 QiPaws</h1>
+          <p class="lead"><span class="typewriter" data-text="命理学不再是预测玄学，而是被重新放回人生哲学。所有排盘功能免费开放，无需注册。">命理学不再是预测玄学，而是被重新放回人生哲学。所有排盘功能免费开放，无需注册。</span></p>
+          <div class="feature-line island-pill-row" aria-label="核心定位">
+            <span class="island-pill island-pill--orange">反迷信</span>
+            <span class="island-pill island-pill--teal">免注册</span>
+            <span class="island-pill island-pill--blue">算法严谨</span>
+            <span class="island-pill island-pill--green">不收集信息</span>
+          </div>
+          <div class="hero-actions">
+            <a class="button" href="https://apps.apple.com/cn/app/%E7%8B%97%E8%BF%90%E6%9E%81%E4%BD%B3-%E4%BA%94%E8%BF%90%E5%85%AD%E6%B0%94%E7%B4%AB%E5%BE%AE%E6%96%97%E6%95%B0%E5%9B%9B%E6%9F%B1%E5%85%AB%E5%AD%97%E9%9D%A2%E7%9B%B8%E8%B5%B7%E5%90%8D%E6%8B%A9%E5%90%89%E6%97%A5ai%E5%88%86%E6%9E%90/id6755094863" target="_blank" rel="noopener">App Store</a>
+            <a class="button secondary" href="#free-paipan">免费网页</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img class="hero-icon" src="fate512.png" alt="狗运极佳 App 图标">
+          <div class="hero-claim" aria-label="当前版本能力">
+            <strong>30+ 算法</strong>
+            <span>已在当前版本实现</span>
+            <ul class="hero-mini-list">
+              <li>排盘</li>
+              <li>AI</li>
+              <li>长时记忆</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#system" aria-label="向下滑动到算法区">向下滑动</a>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="island-card card-system" data-section="system">
+      <h2 class="island-anchor" id="system">已经实现的命理算法</h2>
+      <div class="algorithm-field" aria-label="算法清单">
+        <span class="island-pill">四柱八字</span>
+        <span class="island-pill">紫微斗数</span>
+        <span class="island-pill">七政四余</span>
+        <span class="island-pill">奇门遁甲</span>
+        <span class="island-pill">大六壬</span>
+        <span class="island-pill">易经推命</span>
+        <span class="island-pill">五运六气</span>
+        <span class="island-pill">阳宅卦象</span>
+        <span class="island-pill">风水罗盘</span>
+        <span class="island-pill">金钱卦</span>
+        <span class="island-pill">周易六爻</span>
+        <span class="island-pill">个人万年历</span>
+      </div>
+      <div class="ledger">
+        <div class="ledger-row">
+          <div class="ledger-icon"><img src="icons/icon-map.svg" alt="" width="28" height="28" decoding="async"></div>
+          <div>
+            <div class="ledger-term">排盘</div>
+            <div class="ledger-desc">精确到县的太阳时。</div>
+          </div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-icon"><img src="icons/icon-chat.svg" alt="" width="28" height="28" decoding="async"></div>
+          <div>
+            <div class="ledger-term">AI</div>
+            <div class="ledger-desc">专为命理理论优化的模型。</div>
+          </div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-icon"><img src="icons/icon-camera.svg" alt="" width="28" height="28" decoding="async"></div>
+          <div>
+            <div class="ledger-term">时间</div>
+            <div class="ledger-desc">精确感知当前时间。</div>
+          </div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-icon"><img src="icons/icon-critterpedia.svg" alt="" width="28" height="28" decoding="async"></div>
+          <div>
+            <div class="ledger-term">记忆</div>
+            <div class="ledger-desc">超长上下文 + 长时记忆。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="island-card" data-section="free-paipan">
+      <div class="section-header">
+        <h2 class="island-anchor" id="free-paipan">免费排盘</h2>
+        <div class="prose">
+          <p>由于不可抗力因素，狗运极佳目前无法上线安卓版本。为使用苹果设备之外的用户，我们推荐以下第三方免费排盘网页。</p>
+          <p>需要注意的是，上述网站所有的解读，与狗运极佳软件一样，均没有任何科学依据，不具备任何预测功能，请勿迷信任何断言。</p>
+        </div>
+      </div>
+      <div class="resource-list" aria-label="第三方免费排盘推荐">
+        <article class="resource-card resource-card--featured">
+          <div class="resource-head">
+            <h3 class="resource-title">元亨利贞网</h3>
+            <span class="resource-tag resource-tag--orange">首推 · 一站式</span>
+          </div>
+          <a class="resource-link" href="https://p.china95.com" target="_blank" rel="noopener noreferrer">https://p.china95.com</a>
+          <p class="resource-desc">老牌专业级、权威的一站式命理工具网站，包含六爻、八字、紫微、诸葛神数、奇门、梅花易数、小成图、小奇门、金口诀、太乙神数、大六壬、周公解梦等。紫微斗数排盘的星耀可以点击跳转到解读页面。</p>
+        </article>
+        <article class="resource-card">
+          <div class="resource-head">
+            <h3 class="resource-title">紫微斗数排盘</h3>
+            <span class="resource-tag">紫微斗数</span>
+          </div>
+          <a class="resource-link" href="https://ziwei.pub/" target="_blank" rel="noopener noreferrer">https://ziwei.pub/</a>
+          <p class="resource-desc">可补全元亨利贞网无法计算大运乃至流时的缺点。</p>
+        </article>
+        <article class="resource-card">
+          <div class="resource-head">
+            <h3 class="resource-title">奇门遁甲排盘</h3>
+            <span class="resource-tag resource-tag--teal">奇门遁甲</span>
+          </div>
+          <a class="resource-link" href="https://qm.qfdk.me/" target="_blank" rel="noopener noreferrer">https://qm.qfdk.me/</a>
+          <p class="resource-desc">可补全元亨利贞网没有文字解释和五行颜色缺失的短板。</p>
+        </article>
+        <article class="resource-card">
+          <div class="resource-head">
+            <h3 class="resource-title">七政四余排盘</h3>
+            <span class="resource-tag resource-tag--blue">七政四余</span>
+          </div>
+          <a class="resource-link" href="https://www.astro-read.com/astrology/chinese-astrology-chart" target="_blank" rel="noopener noreferrer">https://www.astro-read.com/astrology/chinese-astrology-chart</a>
+          <p class="resource-desc">虽然可调参数有限，但是是比较少见的七政四余免费排盘网站。</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="island-card" data-section="animals">
+      <div class="section-header">
+        <h2 class="island-anchor" id="animals">宠物友好</h2>
+        <div class="prose">
+          <p>狗运极佳首先是面向<strong>人</strong>的传统命理学与生活哲学工具，同时<strong>宠物友好</strong>——支持为宠物建立案例，记录关系与陪伴。动物同样参与我们的时间经验与观察，但产品不会被窄化成「宠物专用」或「养宠养生」软件。</p>
+          <p>我们主张通过命理学学习<strong>主观能动性</strong>：破除迷信，把命理定位为生活哲学，而非宿命论。命理理论本身是混沌多变的，同一事件可以有好坏多个角度，像太极一样允许多重解释——这种模糊性恰恰给生活带来冗余与回旋空间。</p>
+        </div>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>简易流：狗运极佳</strong>
+        <p>© 2025 简易流 Jianyiflow.cn. All rights reserved.</p>
+      </div>
+      <div class="beian">
+        <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32038102020116" rel="noreferrer" target="_blank">
+          <img src="备案图标.png" alt="">苏公网安备32038102020116号
+        </a>
+        <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">苏ICP备2025192982号-1</a>
+        <a href="privacy-policies.html">政策中心</a>
+      </div>
+      <div class="theme-credit">视觉风格参考 <a href="https://github.com/guokaigdg/animal-island-ui" target="_blank" rel="noopener">animal-island-ui</a>，作者 guokaigdg，许可证 CC BY-NC 4.0。</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    const header = document.querySelector('.site-header');
+    const cards = document.querySelectorAll('.island-card');
+    const sectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const scrollCue = document.querySelector('.scroll-cue');
+
+    function scrollToAnchor(id) {
+      const target = id === 'top' ? document.getElementById('top') : document.getElementById(id);
+      if (!target || !header) return;
+      const offset = header.offsetHeight + 8;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      const card = id === 'top' ? document.querySelector('.hero') : target.closest('.island-card');
+      if (card) {
+        card.classList.remove('jump-active');
+        requestAnimationFrame(() => card.classList.add('jump-active'));
+      }
+    }
+
+    function setActiveLink(id) {
+      sectionLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+    }
+
+    function updateScrollCue() {
+      if (!scrollCue) return;
+      scrollCue.classList.toggle('hidden', window.scrollY > 24);
+    }
+
+    window.addEventListener('scroll', updateScrollCue, { passive: true });
+    updateScrollCue();
+
+    const sectionObserver = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible) setActiveLink(visible.target.dataset.section || 'top');
+        }, { rootMargin: '-25% 0px -55% 0px', threshold: [0.1, 0.35, 0.6] })
+      : null;
+
+    if (sectionObserver) {
+      document.querySelector('.hero').dataset.section = 'top';
+      cards.forEach((card) => sectionObserver.observe(card));
+    }
+
+    document.querySelectorAll('.typewriter').forEach((node) => {
+      const text = node.dataset.text || '';
+      let letterIndex = 0;
+
+      function tick() {
+        letterIndex += 1;
+        node.textContent = text.slice(0, letterIndex);
+        if (letterIndex < text.length) window.setTimeout(tick, 58);
+        else node.classList.add('done');
+      }
+
+      tick();
+    });
+
+    if (menuButton && navLinks) {
+      menuButton.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const id = link.getAttribute('href').slice(1);
+        if (!id) return;
+        event.preventDefault();
+        scrollToAnchor(id);
+        if (navLinks) navLinks.classList.remove('open');
+        if (menuButton) menuButton.setAttribute('aria-expanded', 'false');
+        history.replaceState(null, '', `#${id}`);
+        setActiveLink(id);
+      });
+    });
+
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      if (id) {
+        requestAnimationFrame(() => scrollToAnchor(id));
+        setActiveLink(id);
+      }
+    } else {
+      setActiveLink('top');
+    }
+  </script>
+</body>
+</html>

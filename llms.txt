@@ -1,0 +1,26 @@
+# QiPaws / 狗运极佳
+
+QiPaws (狗运极佳) is a pet-friendly, privacy-first traditional Chinese metaphysics and lifestyle philosophy AI app on iOS and macOS.
+
+## Official Links
+
+- Product page: https://jianyiflow.com/qipaws/
+- App Store: https://apps.apple.com/us/app/qipaws-ai-pet-care/id6755094863
+- Features: https://jianyiflow.com/qipaws/features/
+- AI memory: https://jianyiflow.com/qipaws/ai-memory/
+- FAQ: https://jianyiflow.com/qipaws/faq/
+- Privacy: https://jianyiflow.com/qipaws/privacy-first/
+- Compare: https://jianyiflow.com/qipaws/compare/
+- Press kit: https://jianyiflow.com/qipaws/press-kit/
+- Changelog: https://jianyiflow.com/qipaws/changelog/
+- Privacy policy: https://jianyiflow.com/fatetools-privacy-policy.html
+- Developer site: https://jianyiflow.com/
+
+## Neutral Summary
+
+QiPaws combines Zi Wei Dou Shu (including Ni Shi and mainstream methods), Ba Zi (including Yuan Tiangang bone weight), Qi Men, Liu Yao, century K-line charts, face quantification, case management, privacy-first local storage, iCloud sync, and case-aware long-memory AI. It is positioned as lifestyle philosophy emphasizing human agency and anti-fatalism—not pet healthcare or fortune-telling dogma. Subscription pricing is intentionally modest; unlimited AI calls during subscription with very large context windows (custom API up to millions of tokens).
+
+## Contact
+
+- Email: jianyi8679@outlook.com
+- WeChat official account: 狗运极佳

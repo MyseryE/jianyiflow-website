@@ -1,0 +1,358 @@
+.qipaws-page {
+  width: min(960px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 48px;
+}
+
+.qipaws-card {
+  padding: 28px 32px;
+  background: var(--island-content, rgb(247, 243, 223));
+  border: 2px solid var(--island-border, #c4b89e);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px var(--island-shadow, rgba(61, 52, 40, 0.12));
+}
+
+.qipaws-card + .qipaws-card {
+  margin-top: 20px;
+}
+
+.qipaws-card h1 {
+  margin: 0 0 16px;
+  color: var(--island-text, #794f27);
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.qipaws-card h2 {
+  margin: 28px 0 12px;
+  color: var(--island-text, #794f27);
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.qipaws-card h2:first-child {
+  margin-top: 0;
+}
+
+.qipaws-card p,
+.qipaws-card li {
+  margin: 0 0 12px;
+  line-height: 1.75;
+}
+
+.qipaws-card ul {
+  margin: 0 0 16px;
+  padding-left: 1.25rem;
+}
+
+.qipaws-lead {
+  font-size: 1.05rem;
+  color: var(--island-body, #725d42);
+}
+
+.qipaws-nav {
+  width: min(960px, calc(100% - 32px));
+  min-height: 72px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.qipaws-nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--island-text, #794f27);
+  font-size: 18px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.qipaws-nav-brand img {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.qipaws-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.qipaws-nav-links a {
+  padding: 8px 12px;
+  color: var(--island-text, #794f27);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.qipaws-nav-links a:hover,
+.qipaws-nav-links a[aria-current="page"] {
+  color: #fff9e3;
+  background: var(--island-primary, #19c8b9);
+}
+
+.qipaws-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.qipaws-pill {
+  padding: 6px 12px;
+  background: rgba(255, 253, 243, 0.8);
+  border: 1px solid var(--island-border-strong, #9f927d);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--island-text, #794f27);
+}
+
+.qipaws-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.qipaws-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  color: #fff9e3;
+  background: var(--island-primary, #19c8b9);
+  border: 2px solid #0ea99d;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 4px 0 #0ea99d;
+}
+
+.qipaws-btn--ghost {
+  color: var(--island-text, #794f27);
+  background: #fffdf3;
+  border-color: var(--island-border-strong, #9f927d);
+  box-shadow: 0 3px 0 var(--island-shadow-btn, #bdaea0);
+}
+
+.qipaws-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.qipaws-table th,
+.qipaws-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--island-border, #c4b89e);
+  text-align: left;
+  vertical-align: top;
+}
+
+.qipaws-table th {
+  background: rgba(25, 200, 185, 0.12);
+  color: var(--island-text, #794f27);
+  font-weight: 900;
+}
+
+.qipaws-faq details {
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 253, 243, 0.6);
+  border: 1px solid var(--island-border, #c4b89e);
+  border-radius: 14px;
+}
+
+.qipaws-faq summary {
+  cursor: pointer;
+  color: var(--island-text, #794f27);
+  font-weight: 900;
+  list-style: none;
+}
+
+.qipaws-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.qipaws-faq details[open] summary {
+  margin-bottom: 10px;
+}
+
+.qipaws-footer {
+  margin-top: 32px;
+  padding: 24px 0;
+  color: #fff8de;
+  background: #6e8f5b;
+  text-align: center;
+  font-size: 14px;
+}
+
+.qipaws-footer a {
+  color: #fff8de;
+}
+
+.qipaws-footer-inner {
+  width: min(960px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.qipaws-breadcrumb {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--island-muted, #8a7b66);
+}
+
+.qipaws-breadcrumb a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.qipaws-compare-yes {
+  color: #0a7a5f;
+  font-weight: 900;
+}
+
+.qipaws-compare-partial {
+  color: #9a6b1a;
+  font-weight: 800;
+}
+
+.qipaws-compare-no {
+  color: #8a7b66;
+}
+
+.qipaws-copybox {
+  margin: 12px 0 20px;
+  padding: 16px 18px;
+  background: rgba(255, 253, 243, 0.85);
+  border: 1px dashed var(--island-border-strong, #9f927d);
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.qipaws-copybox-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--island-muted, #8a7b66);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.qipaws-asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 16px 0 24px;
+}
+
+.qipaws-asset {
+  padding: 14px;
+  background: rgba(255, 253, 243, 0.7);
+  border: 1px solid var(--island-border, #c4b89e);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.qipaws-asset img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.qipaws-asset figcaption {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--island-text, #794f27);
+}
+
+.qipaws-changelog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.qipaws-changelog-item {
+  position: relative;
+  margin: 0 0 24px;
+  padding-left: 20px;
+  border-left: 3px solid rgba(25, 200, 185, 0.45);
+}
+
+.qipaws-changelog-item:last-child {
+  margin-bottom: 0;
+}
+
+.qipaws-changelog-date {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--island-muted, #8a7b66);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.qipaws-changelog-item h2 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+.qipaws-changelog-item ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.qipaws-note {
+  padding: 14px 16px;
+  background: rgba(130, 213, 187, 0.18);
+  border: 1px solid rgba(25, 200, 185, 0.35);
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.qipaws-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .qipaws-nav-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .qipaws-card {
+    padding: 20px 18px;
+  }
+
+  .qipaws-table {
+    font-size: 13px;
+  }
+
+  .qipaws-table th,
+  .qipaws-table td {
+    padding: 8px;
+  }
+}

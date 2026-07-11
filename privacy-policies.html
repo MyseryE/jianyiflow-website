@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>政策中心 | 简易流</title>
+  <link rel="icon" href="fate512.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="island-theme.css">
+  <style>
+    .policy-shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 40px;
+    }
+
+    .doc-main {
+      min-width: 0;
+    }
+
+    .doc-section {
+      margin-top: 34px;
+    }
+
+    .doc-section:first-child {
+      margin-top: 0;
+    }
+
+    .doc-section h2 {
+      margin: 0 0 18px;
+      color: #794f27;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .doc-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .doc-row {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .doc-row img {
+      width: 78px;
+      height: 78px;
+      object-fit: cover;
+      border-radius: 19px;
+      box-shadow: 0 5px 0 rgba(121, 79, 39, 0.18);
+    }
+
+    .doc-row h3 {
+      margin: 0 0 4px;
+      color: #794f27;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .doc-row p {
+      margin: 0;
+      color: #725d42;
+      font-weight: 600;
+    }
+
+    .doc-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 9px;
+    }
+
+    .doc-actions a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      color: #794f27;
+      background: #fffdf3;
+      border: 2px solid #9f927d;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .doc-actions a.app-store-link {
+      color: #794f27;
+      background: #fffdf3;
+      border-color: #fffdf3;
+      box-shadow: 0 5px 0 #bdaea0;
+    }
+
+    @media (max-width: 860px) {
+      .doc-row {
+        grid-template-columns: 1fr;
+      }
+
+      .doc-actions {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container mx-auto flex justify-between items-center px-6 lg:px-12">
+      <a href="index.html" class="text-2xl font-bold">简易流</a>
+      <h1 class="text-xl lg:text-2xl font-bold">政策中心</h1>
+      <a href="index.html" class="font-bold">返回主页</a>
+    </nav>
+  </header>
+
+  <main class="policy-shell">
+    <div class="doc-main">
+      <section class="doc-section" id="dogluck">
+          <h2>狗运极佳</h2>
+          <article class="doc-row island-card primary">
+            <img src="fate512.png" alt="狗运极佳 App 图标">
+            <div>
+              <h3>狗运极佳</h3>
+              <p>命理学人生哲学与 AI 分析应用。</p>
+            </div>
+            <div class="doc-actions">
+              <a class="app-store-link" href="https://apps.apple.com/cn/app/%E7%8B%97%E8%BF%90%E6%9E%81%E4%BD%B3-%E4%BA%94%E8%BF%90%E5%85%AD%E6%B0%94%E7%B4%AB%E5%BE%AE%E6%96%97%E6%95%B0%E5%9B%9B%E6%9F%B1%E5%85%AB%E5%AD%97%E9%9D%A2%E7%9B%B8%E8%B5%B7%E5%90%8D%E6%8B%A9%E5%90%89%E6%97%A5ai%E5%88%86%E6%9E%90/id6755094863" target="_blank" rel="noopener">App Store</a>
+              <a href="fatetools-privacy-policy.html">隐私政策</a>
+              <a href="fatetools_terms_of_use.html">用户协议</a>
+            </div>
+          </article>
+        </section>
+
+        <section class="doc-section" id="archive">
+          <h2>应用归档</h2>
+          <div class="doc-list">
+            <article class="doc-row island-card">
+              <img src="EvoTune图标512.png" alt="EvoTune 练声日常 App 图标">
+              <div>
+                <h3>EvoTune 练声日常</h3>
+                <p>练声工具相关文档。</p>
+              </div>
+              <div class="doc-actions">
+                <a href="evotune-privacy-policy.html">隐私政策</a>
+                <a href="evotune_terms_of_use.html">用户协议</a>
+              </div>
+            </article>
+
+            <article class="doc-row island-card">
+              <img src="纸背单词图标512.png" alt="纸背单词 App 图标">
+              <div>
+                <h3>纸背单词</h3>
+                <p>英语学习工具相关文档。</p>
+              </div>
+              <div class="doc-actions">
+                <a href="zhibei-privacy-policy.html">隐私政策</a>
+                <a href="zhibei-terms-of-use.html">用户协议</a>
+              </div>
+            </article>
+
+            <article class="doc-row island-card">
+              <img src="记账512白色.png" alt="一帐一算 App 图标">
+              <div>
+                <h3>一帐一算</h3>
+                <p>记账工具相关文档。</p>
+              </div>
+              <div class="doc-actions">
+                <a href="calculator_privacy-policy.html">隐私政策</a>
+                <a href="calculator_terms_of_use.html">用户协议</a>
+              </div>
+            </article>
+
+            <article class="doc-row island-card">
+              <img src="成为英雄512.png" alt="千日挑战计划 App 图标">
+              <div>
+                <h3>千日挑战计划</h3>
+                <p>运动挑战工具相关文档。</p>
+              </div>
+              <div class="doc-actions">
+                <a href="hero-privacy-policy.html">隐私政策</a>
+                <a href="hero-terms-of-use.html">用户协议</a>
+              </div>
+            </article>
+          </div>
+        </section>
+    </div>
+  </main>
+
+  <footer class="py-10">
+    <div class="container mx-auto px-6 lg:px-12 text-center">
+      <p>© 2025 简易流 Jianyiflow.cn. All rights reserved.</p>
+      <p class="theme-credit">视觉风格参考 <a href="https://github.com/guokaigdg/animal-island-ui" target="_blank" rel="noopener">animal-island-ui</a>，作者 guokaigdg，许可证 CC BY-NC 4.0。</p>
+    </div>
+  </footer>
+</body>
+</html>
