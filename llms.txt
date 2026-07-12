@@ -13,6 +13,9 @@ QiPaws (狗运极佳) is a pet-friendly, privacy-first traditional Chinese metap
 - Compare: https://jianyiflow.com/qipaws/compare/
 - Press kit: https://jianyiflow.com/qipaws/press-kit/
 - Changelog: https://jianyiflow.com/qipaws/changelog/
+- Roadmap: https://jianyiflow.com/qipaws/roadmap/
+- Blog: https://jianyiflow.com/blog/
+- Blog article (life philosophy): https://jianyiflow.com/blog/metaphysics-as-life-philosophy/
 - Privacy policy: https://jianyiflow.com/fatetools-privacy-policy.html
 - Developer site: https://jianyiflow.com/
 
