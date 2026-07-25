@@ -109,7 +109,7 @@ body {
     <!-- 中文版本 -->
     <div id="content-zh">
         <h1 class="text-3xl lg:text-4xl font-bold text-center mb-4 text-purple-900">狗运极佳 用户协议</h1>
-       <p class="text-center text-gray-500 mb-10">生效日期：2026年7月6日</p>
+       <p class="text-center text-gray-500 mb-10">生效日期：2026年7月25日</p>
         <p><strong>Apple App Store特别声明：本应用通过Apple App Store分发,您对本应用的使用受到本协议以及Apple App Store使用条款的共同约束。Apple公司是本协议的第三方受益人,有权直接对您执行本协议的相关条款。</strong></p>
 
         <h2>重要声明</h2>
@@ -256,10 +256,11 @@ body {
         <h2>7. 第三方服务</h2>
         <p>本应用使用以下第三方服务,这些服务的使用均受其各自服务条款约束：</p>
         <ul>
-            <li><strong>Apple iCloud（CloudKit 与 iCloud 钥匙串）：</strong>用于可选的数据与配置同步。启用相关系统能力后，案例数据、模型选择以及用户自行填写的 API Key 等配置，可能通过您的私人 CloudKit 数据库或 iCloud 钥匙串在同一 Apple 账户的设备间同步；开发者不会将其保存到自建服务器。</li>
+            <li><strong>Apple iCloud（CloudKit 与 iCloud 钥匙串）：</strong>用于可选的数据与配置同步。启用相关系统能力后，案例数据、模型选择以及用户自行填写的 API Key 等配置，可能通过您的私人 CloudKit 数据库或 iCloud 钥匙串在同一 Apple 账户的设备间同步；案例、札记、聊天等内容不会保存到开发者自建服务器。</li>
             <li><strong>Apple App Store：</strong> 用于订阅管理和应用分发。</li>
             <li><strong>官方 AI 服务商：</strong>当前提供 DeepSeek、Kimi、阿里通义千问、小米 MiMo、MiniMax、智谱 GLM 等模型入口，仅在您主动使用 AI 功能时连接所选服务商的官方 API。传输内容包括您主动提交的文字及完成分析所需的相关案例字段，具体处理规则以所选服务商政策为准。</li>
             <li><strong>腾讯云（语音识别）：</strong> 仅在您使用语音输入功能时调用,通过「一句话识别」接口将语音实时转录为文字。</li>
+            <li><strong>开发者 PostgreSQL 服务器：</strong> 仅用于每日签到状态同步，保存 App 专属 iCloud 用户标识、免费真气余额、连续签到天数、签到及补签日期、补签卡数量，以及防止补签卡重复发放所需的 StoreKit 交易编号。</li>
         </ul>
         <p>我们不对上述第三方服务的可用性、准确性或可靠性承担责任。您使用第三方服务时,应遵守其相应的服务条款和隐私政策。</p>
 
@@ -267,7 +268,7 @@ body {
         <p>本应用提供可选的语音输入功能，仅在您主动使用时申请麦克风权限。语音通过腾讯云「一句话识别」接口实时转录为文字。我们不对语音录音进行存储,不用于用户追踪或行为画像。您可随时在设备"设置"中关闭麦克风权限。</p>
 
         <h2>8. 数据收集与隐私保护</h2>
-        <p>我们极其重视您的隐私，并采用本地优先的数据处理方式。开发者不通过自建服务器建立用户身份档案；但在您主动启用 iCloud 同步、AI 分析或语音识别等功能时，为实现相应功能，必要数据会传输至 Apple 或您选择的服务商。有关数据类型、目的、保存位置和第三方处理规则，请参阅我们的<a href="fatetools-privacy-policy.html" target="_blank">隐私政策</a>，该政策构成本协议的一部分。</p>
+        <p>我们极其重视您的隐私，并采用本地优先的数据处理方式。除每日签到所必需的有限数据外，开发者不在自建服务器上收集或存储您的隐私数据（如案例、札记、聊天内容等）；在您主动启用 iCloud 同步、AI 分析或语音识别等功能时，为实现相应功能，必要数据会传输至 Apple 或您选择的服务商。有关数据类型、目的、保存位置和第三方处理规则，请参阅我们的<a href="fatetools-privacy-policy.html" target="_blank">隐私政策</a>，该政策构成本协议的一部分。</p>
 
         <h2>9. 免责声明</h2>
         <h3>9.1 Apple免责声明</h3>
@@ -327,7 +328,7 @@ body {
     <!-- 英文版本 -->
     <div id="content-en" style="display: none;">
         <h1 class="text-3xl lg:text-4xl font-bold text-center mb-4 text-purple-900">QiPaws Terms of Use</h1>
-       <p class="text-center text-gray-500 mb-10">Effective Date: July 6, 2026</p>
+       <p class="text-center text-gray-500 mb-10">Effective Date: July 25, 2026</p>
         <p><strong>Apple App Store Special Statement: This application is distributed through the Apple App Store. Your use of this application is subject to both this Agreement and the Apple App Store Terms of Use. Apple Inc. is a third-party beneficiary of this Agreement and has the right to enforce the relevant terms of this Agreement directly against you.</strong></p>
 
         <h2>Important Statement</h2>
@@ -474,10 +475,11 @@ body {
         <h2>7. Third-Party Services</h2>
         <p>The App uses the following third-party services, each subject to their respective terms of service:</p>
         <ul>
-            <li><strong>Apple iCloud (CloudKit and iCloud Keychain):</strong> Used for optional data and configuration synchronization. When the relevant system capabilities are enabled, case data, model selection, and user-supplied API keys may sync between devices signed in to the same Apple Account through your private CloudKit database or iCloud Keychain. The developer does not store them on a developer-operated server.</li>
+            <li><strong>Apple iCloud (CloudKit and iCloud Keychain):</strong> Used for optional data and configuration synchronization. When the relevant system capabilities are enabled, case data, model selection, and user-supplied API keys may sync between devices signed in to the same Apple Account through your private CloudKit database or iCloud Keychain. Cases, journals, chat content, and similar data are not stored on developer-operated servers.</li>
             <li><strong>Apple App Store:</strong> Used for subscription management and app distribution.</li>
             <li><strong>Official AI Service Providers:</strong> The App currently offers access to DeepSeek, Kimi, Alibaba Qwen, Xiaomi MiMo, MiniMax, and Zhipu GLM, and connects to the selected provider's official API only when you actively use AI features. Transmitted content includes text you actively submit and relevant case fields needed for analysis; processing is governed by the selected provider's policies.</li>
             <li><strong>Tencent Cloud (Speech Recognition):</strong> Used only when you use voice input, via the "One Sentence Recognition" API to transcribe speech to text in real time.</li>
+            <li><strong>Developer PostgreSQL Server:</strong> Used only for daily check-in status sync, storing the App-specific iCloud user identifier, free Qi balance, consecutive check-in days, check-in and makeup dates, makeup card count, and StoreKit transaction IDs needed to prevent duplicate makeup card grants.</li>
         </ul>
         <p>We are not responsible for the availability, accuracy, or reliability of the above third-party services. When using third-party services, you should comply with their respective terms of service and privacy policies.</p>
 
@@ -486,7 +488,7 @@ body {
 
 
         <h2>8. Data Collection and Privacy Protection</h2>
-        <p>We highly value your privacy and use a local-first data-processing approach. The developer does not create user identity profiles through developer-operated servers. However, when you actively enable iCloud synchronization, AI analysis, or speech recognition, data necessary to provide those features is transmitted to Apple or the provider you select. For details about data categories, purposes, storage locations, and third-party processing, please refer to our <a href="fatetools-privacy-policy.html" target="_blank">Privacy Policy</a>, which forms part of this Agreement.</p>
+        <p>We highly value your privacy and use a local-first data-processing approach. Except for the limited data necessary for daily check-in, the developer does not collect or store your private data (such as cases, journals, or chat content) on developer-operated servers. When you actively enable iCloud synchronization, AI analysis, or speech recognition, data necessary to provide those features is transmitted to Apple or the provider you select. For details about data categories, purposes, storage locations, and third-party processing, please refer to our <a href="fatetools-privacy-policy.html" target="_blank">Privacy Policy</a>, which forms part of this Agreement.</p>
 
         <h2>9. Disclaimer</h2>
         <h3>9.1 Apple Disclaimer</h3>
