@@ -319,6 +319,93 @@
   padding-left: 1.1rem;
 }
 
+.qipaws-changelog-entries {
+  display: grid;
+  gap: 14px;
+}
+
+.qipaws-changelog-entry {
+  padding: 14px 16px;
+  background: rgba(255, 253, 243, 0.82);
+  border: 2px solid var(--island-border, #c4b89e);
+  border-radius: 16px;
+}
+
+.qipaws-changelog-feature {
+  margin: 0 0 8px;
+  color: var(--island-text, #794f27);
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.qipaws-changelog-credit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--island-muted, #8a7b66);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.qipaws-changelog-credit .island-pill {
+  min-height: 26px;
+  padding: 0 10px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.qipaws-changelog-credit-source {
+  color: #634a2e;
+}
+
+.qipaws-changelog-credit-time {
+  margin-left: auto;
+  padding: 2px 10px;
+  color: var(--island-muted, #8a7b66);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(196, 184, 158, 0.55);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.qipaws-changelog-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin-bottom: 12px;
+  padding: 0 12px;
+  color: #725d42;
+  background: rgba(247, 205, 103, 0.35);
+  border: 2px solid rgba(229, 146, 102, 0.45);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.qipaws-changelog-status--current {
+  color: #fff9e3;
+  background: var(--island-primary, #19c8b9);
+  border-color: #0ea99d;
+}
+
+.qipaws-changelog-intro {
+  margin: 0 0 18px;
+  padding: 12px 16px;
+  color: #634a2e;
+  background: rgba(130, 213, 187, 0.16);
+  border: 2px dashed rgba(25, 200, 185, 0.4);
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
 .qipaws-note {
   padding: 14px 16px;
   background: rgba(130, 213, 187, 0.18);

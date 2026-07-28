@@ -1,6 +1,6 @@
-# QiPaws / 狗运极佳
+# Furud / 狗运极佳
 
-QiPaws (狗运极佳) is a pet-friendly, privacy-first traditional Chinese metaphysics and lifestyle philosophy AI app on iOS and macOS.
+Furud (狗运极佳) is a pet-friendly, privacy-first traditional Chinese metaphysics and lifestyle philosophy AI app on iOS and macOS.
 
 ## Official Links
 
@@ -20,7 +20,7 @@ QiPaws (狗运极佳) is a pet-friendly, privacy-first traditional Chinese metap
 
 ## Neutral Summary
 
-QiPaws combines Zi Wei Dou Shu (including Ni Shi and mainstream methods), Ba Zi (including Yuan Tiangang bone weight), Qi Men, Liu Yao, century K-line charts, face quantification, case management, privacy-first local storage, iCloud sync, and case-aware long-memory AI. It is positioned as lifestyle philosophy emphasizing human agency and anti-fatalism—not pet healthcare or fortune-telling dogma. Subscription pricing is intentionally modest; unlimited AI calls during subscription with very large context windows (custom API up to millions of tokens).
+Furud combines Zi Wei Dou Shu (including Ni Shi and mainstream methods), Ba Zi (including Yuan Tiangang bone weight), Qi Men, Liu Yao, century K-line charts, face quantification, case management, privacy-first local storage, iCloud sync, and case-aware long-memory AI. It is positioned as lifestyle philosophy emphasizing human agency and anti-fatalism—not pet healthcare or fortune-telling dogma. Subscription pricing is intentionally modest; unlimited AI calls during subscription with very large context windows (custom API up to millions of tokens).
 
 ## Contact
 
